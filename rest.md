@@ -29,8 +29,12 @@ Application Programming Interface
 
 # Sobre REST, temos os seguintes verbos:
 
+Verbos são ações que gostaríamos de "fazer"
+
 - GET : para "retornar" dados
 - POST : para "enviar" dados novos
 - PATCH : Para atualizar dados
 - PUT : Para atualizar dados
 - DELETE : Para deletar dados
+
+PUT é usado quando enviamos um objeto completo. Se você quiser atualizar só uma parte dele e não reenviar tudo, use PATCH
