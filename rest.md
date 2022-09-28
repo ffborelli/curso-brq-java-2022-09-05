@@ -50,6 +50,8 @@ PUT é usado quando enviamos um objeto completo. Se você quiser atualizar só u
 4. PATCH   (UPDATE) ou PUT (UPDATE)
 5. DELETE  (DELETE)
 
+Sendo mais genérico: 
+
 1. GET ALL --  /entidade
 2. GET ONE (READ) --  /entidade/{id_da_entidade}
 3. POST    (CREATE) --  /entidade
