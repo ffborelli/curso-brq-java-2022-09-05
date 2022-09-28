@@ -38,3 +38,31 @@ Verbos são ações que gostaríamos de "fazer"
 - DELETE : Para deletar dados
 
 PUT é usado quando enviamos um objeto completo. Se você quiser atualizar só uma parte dele e não reenviar tudo, use PATCH
+
+
+# CRUD -> CREATE, READ, UPDATE , DELETE
+
+É Criar, Ler, Alterar e Deletar uma **ENTIDADE**, como por exemplo, professores.
+
+1. GET ALL (READ)
+2. GET ONE (READ)
+3. POST    (CREATE)
+4. PATCH   (UPDATE) ou PUT (UPDATE)
+5. DELETE  (DELETE)
+
+1. GET ALL --  /entidade
+2. GET ONE (READ) --  /entidade/{id_da_entidade}
+3. POST    (CREATE) --  /entidade
+4. PATCH   (UPDATE) ou PUT (UPDATE) --  /entidade/{id_da_entidade}
+5. DELETE  (DELETE) /entidade/{id_da_entidade}
+
+Exemplo: 
+
+1. GET ALL --  /usuarios
+2. GET ONE (READ) --  /usuarios/{id_do_usuario}
+3. POST    (CREATE) --  /usuarios
+4. PATCH   (UPDATE) ou PUT (UPDATE) --   /usuarios/{id_do_usuario}
+5. DELETE  (DELETE)  /usuarios/{id_do_usuario}
+6. GET /usuarios/{id_do_usuario}/nome/{nome_do_usuario}
+
+
