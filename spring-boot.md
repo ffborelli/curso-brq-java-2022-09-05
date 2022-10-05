@@ -61,4 +61,8 @@ O Lombok é um boilerplate que gera código repetitivo em tempo de execução.
 
 Em geral geramos os construtores, getters, setters e  o método toString()
 
-O Lombok é usado com anotações @Data, que faz o papel dos Getters, Setters e toString
+O Lombok é usado com anotações: 
+
+- @Data: faz o papel dos Getters, Setters e toString
+- @AllArgsConstructor : criar o construtor com todos os atributos da classe
+- @NoArgsConstructor : cria o construtor vazio
