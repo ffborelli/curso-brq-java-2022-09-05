@@ -66,3 +66,4 @@ O Lombok é usado com anotações:
 - @Data: faz o papel dos Getters, Setters e toString
 - @AllArgsConstructor : criar o construtor com todos os atributos da classe
 - @NoArgsConstructor : cria o construtor vazio
+- @RequestBody permite capturar os dados vindo do body da requisição e converter para um objeto JAVA
