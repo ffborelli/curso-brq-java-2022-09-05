@@ -54,3 +54,11 @@ OBS: toda anotação em JAVA começa com a **@**
 - @RestController : anotação que permite a classe em questão manipular requisições do tipo REST
 
 Obs: todo endpoint da camada de controller deve ser mapeado com um método
+
+### Lombok
+
+O Lombok é um boilerplate que gera código repetitivo em tempo de execução. 
+
+Em geral geramos os construtores, getters, setters e  o método toString()
+
+O Lombok é usado com anotações @Data, que faz o papel dos Getters, Setters e toString
