@@ -1,10 +1,7 @@
 package com.brq.ms01.controllers;
 
 import com.brq.ms01.models.UsuarioModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -50,6 +47,54 @@ public class UsuarioController {
 
         // return "POST Usuários";
         return usuario;
+    } // create
+
+    // /usuarios/1 -> o valor do id vai ser 1
+
+    @PatchMapping("usuarios/{id}")
+    public UsuarioModel update(@RequestBody UsuarioModel usuarioBody,
+                                @PathVariable int id ){
+        // como achar o usuário a ser alterado?
+        for ( int i = 0; i <  usuarios.size(); i++ ){
+            if (usuarios.get(i).getId() == id){
+                // achamos o usuário a ser alterado
+                usuarios.get(i).setNome( usuarioBody.getNome() );
+                usuarios.get(i).setEmail( usuarioBody.getEmail() );
+
+                return usuarios.get(i);
+            } // if
+        }// for
+
+        return null;
+    } // update()
+
+    @DeleteMapping("usuarios/{id}")
+    public String delete(@PathVariable int id){
+
+        // FORECH
+//        for (UsuarioModel usuarioLocal: usuarios) {
+//            usuarios.remove(usuarioLocal);
+//        }
+         for (int i = 0; i < usuarios.size(); i++){
+             // se achar o usuário, então delete do arraylist
+            if (usuarios.get(i).getId() == id){
+                usuarios.remove(i);
+                return "Usuário delatado com sucesso!";
+            } // if
+         } // for
+        return "Usuário não encontrado";
+    } // delete
+
+    // busca por apenas um usuário (pelo id)
+    @GetMapping("usuarios/{id}")
+    public UsuarioModel getOne(@PathVariable int id){
+
+        for (int i = 0; i < usuarios.size(); i++){
+            if (usuarios.get(i).getId() == id){
+                return usuarios.get(i);
+            } // if
+        } // for
+        return null;
     }
 
-}
+} // UsuarioController
