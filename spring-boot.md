@@ -67,3 +67,13 @@ O Lombok é usado com anotações:
 - @AllArgsConstructor : criar o construtor com todos os atributos da classe
 - @NoArgsConstructor : cria o construtor vazio
 - @RequestBody permite capturar os dados vindo do body da requisição e converter para um objeto JAVA
+
+
+# ORM 
+
+Object Relational Mapping : mapeamento objeto (JAVA) relacional (Banco SQL)
+
+Existem vários ORMs, o que mais se destaca é o Hibernate
+
+O Hibernate é uma ferramente que permite usar objetos JAVA e manipular os daos em um
+banco de dados
