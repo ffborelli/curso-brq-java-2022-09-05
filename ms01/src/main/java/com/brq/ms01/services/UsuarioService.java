@@ -1,9 +1,13 @@
 package com.brq.ms01.services;
 
 import com.brq.ms01.models.UsuarioModel;
+import com.brq.ms01.repositories.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 /*
 * A camada Service é responsável por armazenar as regras de negócio da aplicação
@@ -15,12 +19,20 @@ public class UsuarioService {
     private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
     private int counter = 1;
 
+    @Autowired
+    private UsuarioRepository usuRepository;
+
     public void mostrarMensagemService(){
         System.out.println("Mensagem do serviço");
     }
 
-    public ArrayList<UsuarioModel> getAllUsuarios(){
-        return usuarios;
+    public List<UsuarioModel> getAllUsuarios(){
+
+        // a repository vai executar : SELECT * FROM usuarios;
+        List<UsuarioModel> list = usuRepository.findAll();
+
+        return list;
+        //return usuarios;
     }
 
     public UsuarioModel create(UsuarioModel usuario){
