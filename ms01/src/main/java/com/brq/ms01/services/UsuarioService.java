@@ -52,25 +52,34 @@ public class UsuarioService {
 
     public UsuarioModel update(int id, UsuarioModel usuarioBody)  {
 
-        // ver se os dados existem
-        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
+        UsuarioModel usuario = usuRepository.findById(id)
+                .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
 
-        // eu achei o usuário no banco de dados
-        if (usuarioOptional.isPresent()){
-            // retorna os valores do usuário encontrado no banco de dados
-            UsuarioModel meuUsuario = usuarioOptional.get();
+        usuario.setEmail( usuarioBody.getEmail() );
+        usuario.setNome( usuarioBody.getNome() );
 
-            meuUsuario.setEmail( usuarioBody.getEmail() );
-            meuUsuario.setNome( usuarioBody.getNome() );
+        return usuRepository.save(usuario);
 
-            UsuarioModel usuarioSalvo = usuRepository.save(meuUsuario);
 
-            return usuarioSalvo;
-        }
-        // não achei o usuário no banco
-        else{
-            return usuarioOptional.orElseThrow( () -> new RuntimeException("Usuário não encontrado"));
-        }
+//        // ver se os dados existem
+//        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
+//
+//        // eu achei o usuário no banco de dados
+//        if (usuarioOptional.isPresent()){
+//            // retorna os valores do usuário encontrado no banco de dados
+//            UsuarioModel meuUsuario = usuarioOptional.get();
+//
+//            meuUsuario.setEmail( usuarioBody.getEmail() );
+//            meuUsuario.setNome( usuarioBody.getNome() );
+//
+//            UsuarioModel usuarioSalvo = usuRepository.save(meuUsuario);
+//
+//            return usuarioSalvo;
+//        }
+//        // não achei o usuário no banco
+//        else{
+//            return usuarioOptional.orElseThrow( () -> new RuntimeException("Usuário não encontrado"));
+//        }
 
 //        // como achar o usuário a ser alterado?
 //        for ( int i = 0; i <  usuarios.size(); i++ ){
@@ -106,16 +115,19 @@ public class UsuarioService {
 
     public UsuarioModel getOne(int id){
 
-        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
+        return usuRepository.findById(id)
+                    .orElseThrow( () -> new RuntimeException("Usuário não localizado"));
+//        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
+//
+//        if (usuarioOptional.isPresent()){
+//            UsuarioModel usuario = usuarioOptional.get();
+//
+//            return usuario;
+//        }
+//        else {
+//            return usuarioOptional.orElseThrow( ()-> new RuntimeException("Usuário não localizado") );
+//        }
 
-        if (usuarioOptional.isPresent()){
-            UsuarioModel usuario = usuarioOptional.get();
-
-            return usuario;
-        }
-        else {
-            return usuarioOptional.orElseThrow( ()-> new RuntimeException("Usuário não localizado") );
-        }
 
 //        for (int i = 0; i < usuarios.size(); i++){
 //            if (usuarios.get(i).getId() == id){
