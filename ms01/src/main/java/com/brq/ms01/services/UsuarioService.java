@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 /*
@@ -49,19 +50,40 @@ public class UsuarioService {
         return usuarioSalvo;
     }
 
-    public UsuarioModel update(int id, UsuarioModel usuarioBody){
-        // como achar o usuário a ser alterado?
-        for ( int i = 0; i <  usuarios.size(); i++ ){
-            if (usuarios.get(i).getId() == id){
-                // achamos o usuário a ser alterado
-                usuarios.get(i).setNome( usuarioBody.getNome() );
-                usuarios.get(i).setEmail( usuarioBody.getEmail() );
+    public UsuarioModel update(int id, UsuarioModel usuarioBody)  {
 
-                return usuarios.get(i);
-            } // if
-        }// for
+        // ver se os dados existem
+        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
 
-        return null;
+        // eu achei o usuário no banco de dados
+        if (usuarioOptional.isPresent()){
+            // retorna os valores do usuário encontrado no banco de dados
+            UsuarioModel meuUsuario = usuarioOptional.get();
+
+            meuUsuario.setEmail( usuarioBody.getEmail() );
+            meuUsuario.setNome( usuarioBody.getNome() );
+
+            UsuarioModel usuarioSalvo = usuRepository.save(meuUsuario);
+
+            return usuarioSalvo;
+        }
+        // não achei o usuário no banco
+        else{
+            return usuarioOptional.orElseThrow( () -> new RuntimeException("Usuário não encontrado"));
+        }
+
+//        // como achar o usuário a ser alterado?
+//        for ( int i = 0; i <  usuarios.size(); i++ ){
+//            if (usuarios.get(i).getId() == id){
+//                // achamos o usuário a ser alterado
+//                usuarios.get(i).setNome( usuarioBody.getNome() );
+//                usuarios.get(i).setEmail( usuarioBody.getEmail() );
+//
+//                return usuarios.get(i);
+//            } // if
+//        }// for
+//
+//        return null;
     }
 
     public String delete(int id){

@@ -3,10 +3,7 @@ package com.brq.ms01;
 import com.brq.ms01.models.UsuarioModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.yaml.snakeyaml.util.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.Optional;
 
 @SpringBootApplication
 public class Ms01Application {
