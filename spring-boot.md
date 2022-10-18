@@ -77,3 +77,14 @@ Existem vários ORMs, o que mais se destaca é o Hibernate
 
 O Hibernate é uma ferramente que permite usar objetos JAVA e manipular os daos em um
 banco de dados
+
+# Algumas anotações
+
+@Autowired
+@Services
+@Repositories
+@Entity
+@Table
+@Column
+@RestCotroller
+@GeneratedValue

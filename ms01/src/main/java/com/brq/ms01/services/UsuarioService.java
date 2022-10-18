@@ -37,12 +37,16 @@ public class UsuarioService {
 
     public UsuarioModel create(UsuarioModel usuario){
 
-        usuario.setId( counter );
-        usuarios.add(usuario);
-        counter++;
+        // usuario.setId( counter );
+        //usuarios.add(usuario);
+        //counter++;
 
+        // INSERT INTO usuarios (name_user, email_user ) VALUEs()....
+        UsuarioModel usuarioSalvo = usuRepository.save( usuario );
+        // return  usuRepository.save( usuario );
         // return "POST Usuários";
-        return usuario;
+        //return usuario;
+        return usuarioSalvo;
     }
 
     public UsuarioModel update(int id, UsuarioModel usuarioBody){
@@ -65,14 +69,17 @@ public class UsuarioService {
 //        for (UsuarioModel usuarioLocal: usuarios) {
 //            usuarios.remove(usuarioLocal);
 //        }
-        for (int i = 0; i < usuarios.size(); i++){
-            // se achar o usuário, então delete do arraylist
-            if (usuarios.get(i).getId() == id){
-                usuarios.remove(i);
-                return "Usuário delatado com sucesso!";
-            } // if
-        } // for
-        return "Usuário não encontrado";
+//        for (int i = 0; i < usuarios.size(); i++){
+//            // se achar o usuário, então delete do arraylist
+//            if (usuarios.get(i).getId() == id){
+//                usuarios.remove(i);
+//                return "Usuário delatado com sucesso!";
+//            } // if
+//        } // for
+//        return "Usuário não encontrado";
+
+        usuRepository.deleteById(id);
+        return "Usuário delatado com sucesso!";
     }
 
     public UsuarioModel getOne(int id){
