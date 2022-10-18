@@ -105,11 +105,23 @@ public class UsuarioService {
     }
 
     public UsuarioModel getOne(int id){
-        for (int i = 0; i < usuarios.size(); i++){
-            if (usuarios.get(i).getId() == id){
-                return usuarios.get(i);
-            } // if
-        } // for
-        return null;
+
+        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
+
+        if (usuarioOptional.isPresent()){
+            UsuarioModel usuario = usuarioOptional.get();
+
+            return usuario;
+        }
+        else {
+            return usuarioOptional.orElseThrow( ()-> new RuntimeException("Usuário não localizado") );
+        }
+
+//        for (int i = 0; i < usuarios.size(); i++){
+//            if (usuarios.get(i).getId() == id){
+//                return usuarios.get(i);
+//            } // if
+//        } // for
+//        return null;
     }
 }
