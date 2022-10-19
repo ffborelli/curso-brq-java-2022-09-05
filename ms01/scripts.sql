@@ -12,3 +12,23 @@ CREATE TABLE IF NOT EXISTS usuarios(
 
 -- 17 de outubro
 
+INSERT INTO usuarios
+	(nome_user, email_user)
+VALUES('Elys', 'elys@brq.com');
+
+DELETE FROM usuarios
+	where id_user = 1000;
+
+-- 18 de outubro
+
+ALTER TABLE usuarios
+	ADD COLUMN idade int;
+
+describe usuarios ;
+
+CREATE INDEX usuarios_idade
+	ON usuarios (idade);
+
+ALTER TABLE usuarios
+	DROP COLUMN idade;
+

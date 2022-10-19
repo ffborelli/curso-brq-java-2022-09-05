@@ -55,8 +55,10 @@ public class UsuarioService {
         UsuarioModel usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
 
+
         usuario.setEmail( usuarioBody.getEmail() );
         usuario.setNome( usuarioBody.getNome() );
+        usuario.setTelefone( usuarioBody.getTelefone() );
 
         return usuRepository.save(usuario);
 
