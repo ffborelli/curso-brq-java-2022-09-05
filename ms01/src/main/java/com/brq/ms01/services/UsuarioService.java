@@ -45,14 +45,14 @@ public class UsuarioService {
 
         // TEMOS QUE CONVERTER UM DTO PARA UM MODEL
         // jeito Fabrizio (Burro)
-        UsuarioModel usuarioDTOtoModel = new UsuarioModel();
-        usuarioDTOtoModel.setId( usuario.getId() );
-        usuarioDTOtoModel.setNome(usuario.getNome());
-        usuarioDTOtoModel.setTelefone(usuario.getTelefone());
-        usuarioDTOtoModel.setEmail(usuario.getEmail());
+//        UsuarioModel usuarioDTOtoModel = new UsuarioModel();
+//        usuarioDTOtoModel.setId( usuario.getId() );
+//        usuarioDTOtoModel.setNome(usuario.getNome());
+//        usuarioDTOtoModel.setTelefone(usuario.getTelefone());
+//        usuarioDTOtoModel.setEmail(usuario.getEmail());
 
         // INSERT INTO usuarios (name_user, email_user ) VALUEs()....
-        UsuarioModel usuarioSalvo = usuRepository.save( usuarioDTOtoModel );
+        UsuarioModel usuarioSalvo = usuRepository.save( usuario.toModel() );
         // return  usuRepository.save( usuario );
         // return "POST Usuários";
         //return usuario;
