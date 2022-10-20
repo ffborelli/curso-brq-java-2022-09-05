@@ -1,8 +1,10 @@
 package com.brq.ms01.dtos;
 
+import com.brq.ms01.models.UsuarioModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 @Data
 @AllArgsConstructor
@@ -13,4 +15,13 @@ public class UsuarioDTO {
     private String nome;
     private String email;
     private String telefone;
+
+    public UsuarioModel toModel(){
+
+        ModelMapper mapper = new ModelMapper();
+
+        UsuarioModel model = mapper.map(this , UsuarioModel.class );
+
+        return model;
+    }
 }
