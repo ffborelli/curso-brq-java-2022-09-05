@@ -56,14 +56,17 @@ public class UsuarioController {
     public UsuarioDTO create(@RequestBody UsuarioDTO usuario){
 //        UsuarioModel u = usuService.create(usuario);
 //        return u;
-        return usuService.create(usuario);
+        // return usuService.create(usuario);
+        var t = usuService.create(usuario);
+
+        return t;
 
     } // create
 
     // /usuarios/1 -> o valor do id vai ser 1
 
     @PatchMapping("usuarios/{id}")
-    public UsuarioModel update(@RequestBody UsuarioModel usuarioBody,
+    public UsuarioDTO update(@RequestBody UsuarioDTO usuarioBody,
                                 @PathVariable int id ){
         //        UsuarioModel u = usuService.update(id, usuarioBody);
         //        return u;

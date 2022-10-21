@@ -59,7 +59,7 @@ public class UsuarioService {
         return usuarioSalvo.toDTO();
     }
 
-    public UsuarioModel update(int id, UsuarioModel usuarioBody)  {
+    public UsuarioDTO update(int id, UsuarioDTO usuarioBody)  {
 
         UsuarioModel usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
@@ -69,7 +69,7 @@ public class UsuarioService {
         usuario.setNome( usuarioBody.getNome() );
         usuario.setTelefone( usuarioBody.getTelefone() );
 
-        return usuRepository.save(usuario);
+        return usuRepository.save(usuario).toDTO();
 
 
 //        // ver se os dados existem
