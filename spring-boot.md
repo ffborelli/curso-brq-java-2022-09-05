@@ -88,3 +88,20 @@ banco de dados
 @Column
 @RestCotroller
 @GeneratedValue
+
+
+# Métodos em JAVA
+
+modificadorDeAcesso retorno nomeDoMetodo (parametros){
+
+}
+
+Ex: public int soma(int a, int b)
+soma(1,4)
+1 e 4 são parâmetros
+
+
+public : modificadorDeAcesso
+int : retorno
+soma: nomeDoMetodo
+int a, int b : parametros
