@@ -53,7 +53,7 @@ public class UsuarioController {
     }
 
     @PostMapping("usuarios")
-    public UsuarioModel create(@RequestBody UsuarioDTO usuario){
+    public UsuarioDTO create(@RequestBody UsuarioDTO usuario){
 //        UsuarioModel u = usuService.create(usuario);
 //        return u;
         return usuService.create(usuario);

@@ -37,7 +37,7 @@ public class UsuarioService {
         //return usuarios;
     }
 
-    public UsuarioModel create(UsuarioDTO usuario){
+    public UsuarioDTO create(UsuarioDTO usuario){
 
         // usuario.setId( counter );
         //usuarios.add(usuario);
@@ -56,7 +56,7 @@ public class UsuarioService {
         // return  usuRepository.save( usuario );
         // return "POST Usuários";
         //return usuario;
-        return usuarioSalvo;
+        return usuarioSalvo.toDTO();
     }
 
     public UsuarioModel update(int id, UsuarioModel usuarioBody)  {
