@@ -124,10 +124,12 @@ public class UsuarioService {
         return "Usuário delatado com sucesso!";
     }
 
-    public UsuarioModel getOne(int id){
+    public UsuarioDTO getOne(int id){
 
-        return usuRepository.findById(id)
+        UsuarioModel usuario = usuRepository.findById(id)
                     .orElseThrow( () -> new RuntimeException("Usuário não localizado"));
+
+        return usuario.toDTO();
 //        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);
 //
 //        if (usuarioOptional.isPresent()){

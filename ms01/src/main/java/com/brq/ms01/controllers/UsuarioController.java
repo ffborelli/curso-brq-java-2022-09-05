@@ -84,7 +84,7 @@ public class UsuarioController {
 
     // busca por apenas um usuário (pelo id)
     @GetMapping("usuarios/{id}")
-    public UsuarioModel getOne(@PathVariable int id){
+    public UsuarioDTO getOne(@PathVariable int id){
 
 //        UsuarioModel u = usuService.getOne(id);
 //        return u;
