@@ -105,3 +105,51 @@ public : modificadorDeAcesso
 int : retorno
 soma: nomeDoMetodo
 int a, int b : parametros
+
+# Exercício - dia 22 de outubro
+
+## Passo a Passo para fazer 
+
+Objetivo: Criar CRUD de professor
+
+campos (colunas): id, nome, cpf, salário, telefone 
+
+1-) entrar no https://start.spring.io para criar a estrutura básica de um projeto.
+nome sugestão: ms03
+
+group: nome invertido da empresa: com.brq
+artifact: nome do projeto (ms3)
+escolher java 11
+escolher MAVEN
+
+2-) no passo 1, escolher as dependências corretas 
+  (spring web, jpa,  mysql, lombok)
+
+  Add dependências spring validator e object mapper manualmente no pom.xml
+
+3-) baixar o zip gerado no passo anterior e extrair o zip 
+  dentro da pasta do seu repositório git
+
+4-) abrir projeto do passo 3 no IntelliJ
+
+5-) Criar novo banco de dados no DBeaer
+
+6-) criar tabelas no DBeaer do passo 5
+
+7-) configurar banco de dados no projeto spring boot 
+  (no arquivo application.properties)
+
+8-) Criar camada de model e suas entidades 
+  (não esquecer das entidades)
+
+9-) criar camada repository (repositories) 
+  OBS: é uma interface
+
+10-) criar camada service (services) - classe
+
+11-) criar camada de controller (controllers)- classe
+
+12-) criar collection no POSTMAN
+  Com todos os VERBOS
+
+

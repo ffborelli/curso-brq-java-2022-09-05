@@ -6,6 +6,7 @@ import com.brq.ms01.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class UsuarioController {
     }
 
     @PostMapping("usuarios")
-    public UsuarioDTO create(@RequestBody UsuarioDTO usuario){
+    public UsuarioDTO create(@Valid @RequestBody UsuarioDTO usuario){
 //        UsuarioModel u = usuService.create(usuario);
 //        return u;
         // return usuService.create(usuario);
