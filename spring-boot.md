@@ -55,7 +55,7 @@ OBS: toda anotação em JAVA começa com a **@**
 
 ### Anotações do Spring Boot
 
-- @RestController : anotação que permite a classe em questão manipular requisições do tipo REST
+- **@RestController:** anotação que permite a classe em questão manipular requisições do tipo REST
 
 Obs: todo endpoint da camada de controller deve ser mapeado com um método
 
@@ -90,7 +90,7 @@ banco de dados
 A Injeção de Dependência é uma técnica de desenvolvimento utilizada para evitar o alto nível de acoplamento de código, ou seja, quando os componentes de uma aplicação dependem muito uns dos outros. Utilizando a injeção de dependências, o framework fica responsável por "injetar" as dependências que iremos utilizar de um determinado componente declarado.
 
 
-- @Autowired: é a anotação mais utiliza com relação a injeção de dependências. Como o próprio nome diz, o Autowired, indica um ponto na qual a injeção automática deve ser aplicada.  Lembrando que é necessário que a classe a ser injetada pelo Spring esteja anotado com Component (@Component) ou uma de suas especialidades (@Service, @Repository ou @Controller).
+- **@Autowired:** é a anotação mais utiliza com relação a injeção de dependências. Como o próprio nome diz, o Autowired, indica um ponto na qual a injeção automática deve ser aplicada.  Lembrando que é necessário que a classe a ser injetada pelo Spring esteja anotado com Component (@Component) ou uma de suas especialidades (@Service, @Repository ou @Controller).
 - **@Component:** é um estereótipo genérico para qualquer componente gerenciado pelo Spring
 - **@Service:** faz anotações de classes na camada de serviço (em geral ficam regras de negócio da nossa aplicação)
 - **@Repository:** anota classes na camada de persistência, que atuará como um repositório de banco de dados
@@ -104,14 +104,14 @@ A Injeção de Dependência é uma técnica de desenvolvimento utilizada para ev
 
 # DTO
 
-Data Transfer Object (DTO) ou simplesmente Transfer Object é um padrão de projetos bastante usado em Java para o transporte de dados entre diferentes componentes de um sistema, diferentes instâncias ou processos de um sistema distribuído ou diferentes sistemas via serialização.
+Data Transfer Object **(DTO)** ou simplesmente Transfer Object é um padrão de projetos bastante usado em Java para o transporte de dados entre diferentes componentes de um sistema, diferentes instâncias ou processos de um sistema distribuído ou diferentes sistemas via serialização.
 
 ## Validação de dados na camada controller
 
 Colocamos anotações sobre os atributos da classe DTO
 
-- @NotNull: campo não pode ser nulo
-- @NotEmpty: não pode ser vazio
+- **@NotNull:** campo não pode ser nulo
+- **@NotEmpty:** não pode ser vazio
 
 
 # Métodos em JAVA
@@ -140,46 +140,43 @@ int a, int b : parametros
 
 ## Passo a Passo para fazer 
 
-Objetivo: Criar CRUD de professor
 
-campos (colunas): id, nome, cpf, salário, telefone 
+**Objetivo:** Criar CRUD de professor
 
-1-) entrar no https://start.spring.io para criar a estrutura básica de um projeto.
-nome sugestão: ms03
+**Campos (colunas):** id, nome, cpf, salário, telefone 
 
-group: nome invertido da empresa: com.brq
-artifact: nome do projeto (ms3)
-escolher java 11
-escolher MAVEN
+1-) entrar no https://start.spring.io para criar a estrutura básica de um projeto. Nome sugestão: **ms03**
+
+**group:** nome invertido da empresa: com.brq
+**artifact:** nome do projeto (ms3)
+**escolher java 11**
+**escolher MAVEN**
 
 2-) no passo 1, escolher as dependências corretas 
   (spring web, jpa,  mysql, lombok)
 
-  Add dependências spring validator e object mapper manualmente no pom.xml
+  Adicionar dependências spring validator e object mapper manualmente no pom.xml
 
-3-) baixar o zip gerado no passo anterior e extrair o zip 
-  dentro da pasta do seu repositório git
+3-) baixar o zip gerado no passo anterior e extrair o zip dentro da pasta do seu repositório git
 
 4-) abrir projeto do passo 3 no IntelliJ
 
-5-) Criar novo banco de dados no DBeaer
+5-) criar novo banco de dados no DBeaer
 
 6-) criar tabelas no DBeaer do passo 5
 
-7-) configurar banco de dados no projeto spring boot 
-  (no arquivo application.properties)
+7-) configurar banco de dados no projeto spring boot (no arquivo application.properties)
 
-8-) Criar camada de model e suas entidades 
-  (não esquecer das entidades)
+8-) criar camada de model e suas entidades (não esquecer das entidades)
 
 9-) criar camada repository (repositories) 
-  OBS: é uma interface
+
+**OBS: é uma interface**
 
 10-) criar camada service (services) - classe
 
 11-) criar camada de controller (controllers)- classe
 
-12-) criar collection no POSTMAN
-  Com todos os VERBOS
+12-) criar collection no POSTMAN com todos os VERBOS
 
 
