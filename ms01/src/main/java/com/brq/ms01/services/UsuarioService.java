@@ -28,12 +28,21 @@ public class UsuarioService {
         System.out.println("Mensagem do serviço");
     }
 
-    public List<UsuarioModel> getAllUsuarios(){
+    public List<UsuarioDTO> getAllUsuarios(){
 
         // a repository vai executar : SELECT * FROM usuarios;
         List<UsuarioModel> list = usuRepository.findAll();
 
-        return list;
+        // COMO CONVERTER UMA LISTA DE MODEL PARA LISTA DE DTO?
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
         //return usuarios;
     }
 

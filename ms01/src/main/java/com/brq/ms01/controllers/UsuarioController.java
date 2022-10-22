@@ -31,7 +31,7 @@ public class UsuarioController {
     * o @GetMapping permite associoar o verbo GET com a rota /usuarios
     * */
     @GetMapping("usuarios")
-    public List<UsuarioModel> getAllUsuarios(){
+    public List<UsuarioDTO> getAllUsuarios(){
 
         // ISSO É VERDADEIRO?????
         /*
