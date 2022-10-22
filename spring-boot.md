@@ -85,10 +85,9 @@ Existem vários ORMs, o que mais se destaca é o Hibernate
 O Hibernate é uma ferramente que permite usar objetos JAVA e manipular os daos em um
 banco de dados
 
-# Algumas anotações
+# Algumas anotações do Spring Boot
 
 A Injeção de Dependência é uma técnica de desenvolvimento utilizada para evitar o alto nível de acoplamento de código, ou seja, quando os componentes de uma aplicação dependem muito uns dos outros. Utilizando a injeção de dependências, o framework fica responsável por "injetar" as dependências que iremos utilizar de um determinado componente declarado.
-
 
 - **@Autowired:** é a anotação mais utiliza com relação a injeção de dependências. Como o próprio nome diz, o Autowired, indica um ponto na qual a injeção automática deve ser aplicada.  Lembrando que é necessário que a classe a ser injetada pelo Spring esteja anotado com Component (@Component) ou uma de suas especialidades (@Service, @Repository ou @Controller).
 - **@Component:** é um estereótipo genérico para qualquer componente gerenciado pelo Spring
@@ -139,7 +138,6 @@ int a, int b : parametros
 # Exercício - dia 22 de outubro
 
 ## Passo a Passo para fazer 
-
 
 **Objetivo:** Criar CRUD de professor
 
