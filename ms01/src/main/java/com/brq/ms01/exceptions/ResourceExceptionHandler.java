@@ -18,5 +18,15 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public void methodValidationHandler(){
 
+        StandardError standardError = new StandardError();
+        standardError.setStatus(400);
+        standardError.setPath("");
+
+// @Builder
+//        StandardError standardError = StandardError
+//                            .builder()
+//                            .status(400)
+//                            .path("")
+//                            .build();
     }
 }
