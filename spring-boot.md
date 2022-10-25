@@ -100,6 +100,8 @@ A Injeção de Dependência é uma técnica de desenvolvimento utilizada para ev
 - **@GeneratedValue:** é utilizada para informar a estratégia de geração do valor do identificador único da entidade será gerenciada pelo provedor de persistência. 
 - **GenerationType.IDENTITY:** Informamos ao provedor de persistência que os valores a serem atribuídos ao identificador único serão gerados pela coluna de auto incremento do banco de dados. Assim, um valor para o identificador é gerado para cada registro inserido no banco. Alguns bancos de dados podem não suportar essa opção. 
 - **@Id:** é utilizada para informar ao JPA qual campo/atributo de uma entidade estará relacionado à chave primária da respectiva tabela no banco de dados. 
+- **@ControllerAdvice**: permite manipular exceções de forma global. Para cada tipo de exceção, podemos manipular desde o status até a mensagem de retorno.
+
 
 # DTO
 
