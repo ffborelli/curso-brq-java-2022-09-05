@@ -1,6 +1,7 @@
 package com.brq.ms01.exceptions;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,9 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 public class ResourceExceptionHandler {
 
     /* gostaria que o método abaixo trate exceções
-        do tipo de validação de dados*/
+        do tipo de validação de dados
+
+        ResponseEntity permite retornar o status, headers e e body
+         da requisição para o cliente
+        */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public void methodValidationHandler(
+    public ResponseEntity<StandardError> methodValidationHandler(
             MethodArgumentNotValidException exception,
             HttpServletRequest request
             ){
@@ -33,8 +38,11 @@ public class ResourceExceptionHandler {
                             .builder()
                             .timestamp(System.currentTimeMillis())
                             .status(HttpStatus.BAD_REQUEST.value())
-                            //.error()
-                            .path("")
+                            .error("Validation Error")
+                            .message(exception.getMessage())
+                            .path(request.getRequestURI())
                             .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
     }
 }
