@@ -1,5 +1,6 @@
 package com.brq.ms01.exceptions;
 
+import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,11 @@ import java.util.List;
 * */
 
 @Slf4j
+//@Log4j
 @ControllerAdvice
 public class ResourceExceptionHandler {
+
+    // Logger log = Logger.getFactoryLogger()
 
     /* gostaria que o método abaixo trate exceções
         do tipo de validação de dados
@@ -74,6 +78,7 @@ public class ResourceExceptionHandler {
 
         log.info(exception.getMessage());
         log.info("Fabrizio é legal");
+
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationError);
     }

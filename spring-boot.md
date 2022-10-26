@@ -1,4 +1,46 @@
 
+
+# GIT
+
+1-) git add 
+
+adiciona as modifições ou novos arquivos 
+para que o GIT comece a versionar os mesmos
+
+ex: git add index.html
+
+2-) git commit
+
+adiciona nas moficações para o repositório local
+
+ex: git commit -m "criando nosso primeiro arquivo"
+
+3-) git push
+
+Enviar as modifições do repositório local para o 
+repositório remoto
+
+4-) criar nova branch
+
+checkout (apontar para outra branch)
+
+comando: git checkout -b nova-branch
+
+5-) pull
+
+Recupera e atualiza todas as alterações que estão no 
+repositório remoto e não estão no repositório local.
+
+6-) MERGE
+
+Possibilita enviar as alterações da branch atualiza
+para uma branch em questão
+
+obs: devemos estar observando a branch de destino e 
+usar o merge para a branch de origem
+
+git merge nova-branch
+
 # Maven
 
 É um gerenciador de dependências 
@@ -178,5 +220,7 @@ int a, int b : parametros
 11-) criar camada de controller (controllers)- classe
 
 12-) criar collection no POSTMAN com todos os VERBOS
+
+
 
 
