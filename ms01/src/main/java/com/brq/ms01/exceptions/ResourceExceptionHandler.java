@@ -1,5 +1,6 @@
 package com.brq.ms01.exceptions;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -17,6 +18,7 @@ import java.util.List;
 * até a mensagem de retorno
 * */
 
+@Slf4j
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
@@ -51,7 +53,8 @@ public class ResourceExceptionHandler {
         validationError.setTimestamp(new Date( System.currentTimeMillis() ));
         validationError.setStatus(HttpStatus.BAD_REQUEST.value());
         validationError.setError("Validation Error");
-        validationError.setMessage(exception.getMessage());
+        //validationError.setMessage(exception.getMessage());
+        validationError.setMessage("Erro ao validar os campos!");
         validationError.setPath(request.getRequestURI());
 
         // todos os erros vindo da exceção
@@ -68,6 +71,9 @@ public class ResourceExceptionHandler {
             // adiciono o campo e seu respectivo erro no atributo ERRORS do retorno
             validationError.getErrors().add( fm );
         }
+
+        log.info(exception.getMessage());
+        log.info("Fabrizio é legal");
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationError);
     }
