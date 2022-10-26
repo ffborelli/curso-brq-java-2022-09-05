@@ -5,17 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StandardError {
+public class ValidationError extends StandardError{
 
-    protected Date timestamp;
-    protected Integer status;
-    protected String error;
-    protected String message;
-    protected String path;
+    private List<FieldMessage> errors = new ArrayList<>();
 }

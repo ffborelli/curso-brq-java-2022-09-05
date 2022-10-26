@@ -22,6 +22,8 @@ public class UsuarioDTO {
     @NotNull(message = "Preenchimento Obrigatório")
     @Length(min=3, max= 50, message = "O número de caracteres deve ser entre 3 e 50")
     private String nome;
+
+    @NotNull(message = "Preenchimento Obrigatório")
     private String email;
 
     @Pattern(regexp = "^\\([1-9]{2}\\) [9]{0,1}[2-9]{1}[0-9]{3}\\-[0-9]{4}$", message = "Telefone inválido")
