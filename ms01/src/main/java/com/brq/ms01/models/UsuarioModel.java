@@ -40,6 +40,9 @@ public class UsuarioModel {
     @OneToMany(mappedBy = "usuario")
     private List<FinanciamentoModel> financiamentos;
 
+    @OneToOne(mappedBy = "usuario")
+    private EnderecoModel endereco;
+
     public UsuarioDTO toDTO(){
         ModelMapper mapper = new ModelMapper();
 

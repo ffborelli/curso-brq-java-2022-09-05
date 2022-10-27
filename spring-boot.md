@@ -221,6 +221,19 @@ int a, int b : parametros
 
 12-) criar collection no POSTMAN com todos os VERBOS
 
+# Relacionamentos JPA
+
+# 1 para N (@OneToMany e @ManyToOne)
+
+- criar relacionamento entre as classes JAVA com as anotações @OneToMany e @ManyToOne nas respectivas entidades
+- Na entidade (tabela de dados) que possui a chave estrangeira, colocar a anotação @JoinTable
+- Na outra entidade, usar o mapped by
+
+# 1-1 (@OneToOne)
+
+
+
+
 
 
 
