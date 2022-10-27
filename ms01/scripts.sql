@@ -32,3 +32,32 @@ CREATE INDEX usuarios_idade
 ALTER TABLE usuarios
 	DROP COLUMN idade;
 
+-- aula 26/10
+use db_curso_java;
+-- DROP TABLE financiamentos;
+CREATE TABLE IF NOT EXISTS financiamentos(
+	id_financiamento int primary key
+		auto_increment,
+	numero_contrato int,
+	valor decimal(13,2),
+	usuario_id int,
+	FOREIGN KEY (usuario_id)
+	 references
+		usuarios(id_user)
+);
+
+
+SELECT * FROM financiamentos f
+	INNER JOIN usuarios u
+		ON u.id_user = f.usuario_id;
+
+INSERT INTO financiamentos
+	(	numero_contrato,
+			valor, usuario_id)
+	VALUES ( 12345, 1000, 2 );
+
+INSERT INTO financiamentos
+	(	numero_contrato,
+			valor, usuario_id)
+	VALUES ( 124123, 2000, 2 );
+
