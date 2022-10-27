@@ -24,7 +24,8 @@ public class FinanciamentoModel {
     @Column(name = "valor")
     private Double valor;
 
-    @OneToOne
+    // a entidade que possui a chave estrangeira deve ter o @JoinColumn
+    @ManyToOne
     @JoinColumn (name = "usuario_id")
     private UsuarioModel usuario;
 }

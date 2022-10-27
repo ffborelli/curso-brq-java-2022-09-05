@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,6 +29,8 @@ public class UsuarioDTO {
 
     @Pattern(regexp = "^\\([1-9]{2}\\) [9]{0,1}[2-9]{1}[0-9]{3}\\-[0-9]{4}$", message = "Telefone inválido")
     private String telefone;
+
+    private List<FinanciamentoDTO>  financiamentos;
 
     public UsuarioModel toModel(){
 
