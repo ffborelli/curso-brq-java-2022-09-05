@@ -61,3 +61,24 @@ INSERT INTO financiamentos
 			valor, usuario_id)
 	VALUES ( 124123, 2000, 2 );
 
+
+-- aula 27/10
+CREATE TABLE enderecos (
+	id_endereco int primary key auto_increment,
+	rua_endereco varchar(255),
+	numero_endereco varchar(100),
+	cep_endereco varchar(10),
+	usuario_id int UNIQUE,
+	FOREIGN KEY (usuario_id)
+	 references
+		usuarios(id_user)
+);
+
+use db_curso_java;
+
+INSERT INTO db_curso_java.enderecos
+(rua_endereco, numero_endereco,
+	cep_endereco, usuario_id)
+VALUES('Rua X', '12', '03456711', 2);
+
+
