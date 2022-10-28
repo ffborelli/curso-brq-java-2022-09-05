@@ -92,4 +92,11 @@ public class UsuarioController {
 
     } // getOne
 
+    // usuarios/nome/Fabrizio
+    @GetMapping("usuarios/nome/{nomeBusca}")
+    public List<UsuarioDTO> fetchUsuariosByNome(@PathVariable String nomeBusca){
+        // TODO: Não esquecer do ResponseEntity
+        return usuService.fetchUsuariosByNome(nomeBusca);
+    }
+
 } // UsuarioController

@@ -4,6 +4,8 @@ import com.brq.ms01.models.UsuarioModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /*
 * O primeiro argumento do JpaRepository é a classe modelo para mapear uma tabela
 * e a classe Java
@@ -12,4 +14,8 @@ import org.springframework.stereotype.Repository;
 * */
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> {
+
+    //    SELECT * FROM usuarios u
+    //    where u.nome_user = '';
+    List<UsuarioModel> findByNome(String nome);
 }
