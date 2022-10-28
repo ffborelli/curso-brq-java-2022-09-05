@@ -18,4 +18,10 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> 
     //    SELECT * FROM usuarios u
     //    where u.nome_user = '';
     List<UsuarioModel> findByNome(String nome);
+
+    List<UsuarioModel> findByNomeContains(String nome);
+
+    List<UsuarioModel> findByNomeContainsAndEmailContains(String nome, String email);
+
+    List<UsuarioModel> findByNomeContainsAndEmailContainsAndEnderecoRuaContains(String nome, String email, String rua);
 }

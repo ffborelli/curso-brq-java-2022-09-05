@@ -173,7 +173,23 @@ public class UsuarioService {
 
     public List<UsuarioDTO> fetchUsuariosByNome(String nomeBusca){
 
-        List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
+    }
+
+    public List<UsuarioDTO> fetchUsuariosByNomeAndEmail(String nomeBusca, String emailBusca){
+
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContains(nomeBusca, emailBusca);
 
         List<UsuarioDTO> listDTO = new ArrayList<>();
 

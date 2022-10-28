@@ -96,6 +96,7 @@ public class UsuarioController {
     @GetMapping("usuarios/nome/{nomeBusca}")
     public List<UsuarioDTO> fetchUsuariosByNome(@PathVariable String nomeBusca){
         // TODO: Não esquecer do ResponseEntity
+        // TODO: fazer a busca usando o operador like
         return usuService.fetchUsuariosByNome(nomeBusca);
     }
 
