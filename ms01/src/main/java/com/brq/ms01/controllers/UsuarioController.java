@@ -100,4 +100,14 @@ public class UsuarioController {
         return usuService.fetchUsuariosByNome(nomeBusca);
     }
 
+    // usuarios/nome/Fabrizio
+    @GetMapping("usuarios/nome/{nomeBusca}/email/{emailBusca}")
+    public List<UsuarioDTO> fetchUsuariosByNomeAndEmail(
+            @PathVariable String nomeBusca,
+            @PathVariable String emailBusca){
+        // TODO: Não esquecer do ResponseEntity
+        // TODO: fazer a busca usando o operador like
+        return usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+    }
+
 } // UsuarioController
