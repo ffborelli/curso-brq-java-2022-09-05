@@ -34,6 +34,8 @@ public class UsuarioDTO {
 
     private EnderecoDTO endereco;
 
+    private List<ConsorcioDTO> consorcios;
+
     public UsuarioModel toModel(){
 
         ModelMapper mapper = new ModelMapper();
