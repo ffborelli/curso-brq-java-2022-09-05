@@ -3,6 +3,7 @@ package com.brq.ms01.controllers;
 import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -102,12 +103,18 @@ public class UsuarioController {
 
     // usuarios/nome/Fabrizio
     @GetMapping("usuarios/nome/{nomeBusca}/email/{emailBusca}")
-    public List<UsuarioDTO> fetchUsuariosByNomeAndEmail(
+    public ResponseEntity<List<UsuarioDTO>> fetchUsuariosByNomeAndEmail(
             @PathVariable String nomeBusca,
             @PathVariable String emailBusca){
         // TODO: Não esquecer do ResponseEntity
         // TODO: fazer a busca usando o operador like
-        return usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+
+        // var nome = "Fabrizio";
+
+        // List<UsuarioDTO> list = usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+        var list = usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+
+        return ResponseEntity.ok().body(list);
     }
 
 } // UsuarioController
