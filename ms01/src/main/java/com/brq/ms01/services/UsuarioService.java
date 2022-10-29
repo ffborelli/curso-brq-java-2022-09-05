@@ -176,6 +176,7 @@ public class UsuarioService {
         //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
         List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
 
+        
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
         // Tipo da variável -
@@ -190,6 +191,7 @@ public class UsuarioService {
 
         //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
         List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContains(nomeBusca, emailBusca);
+
 
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
