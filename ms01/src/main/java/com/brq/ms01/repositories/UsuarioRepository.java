@@ -2,6 +2,8 @@ package com.brq.ms01.repositories;
 
 import com.brq.ms01.models.UsuarioModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,6 +22,14 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> 
     List<UsuarioModel> findByNome(String nome);
 
     List<UsuarioModel> findByNomeContains(String nome);
+
+    // JPQL
+    // SELECT * FROM usuarios u where u.nome_user like ?
+    @Query("SELECT u FROM UsuarioModel u WHERE u.nome like :nomeBusca")
+    List<UsuarioModel> fetchByNomeLike(@Param("nomeBusca") String nome);
+
+    @Query(value = "SELECT * FROM usuarios u where u.nome_user like :nomeBusca", nativeQuery = true)
+    List<UsuarioModel> fetchByNomeLikeRawQuery(@Param("nomeBusca") String nome);
 
     List<UsuarioModel> findByNomeContainsAndEmailContains(String nome, String email);
 
