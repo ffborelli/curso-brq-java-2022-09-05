@@ -19,86 +19,68 @@ import java.util.List;
 @RestController
 public class UsuarioController {
 
-
-
     // private UsuarioService usuService = new UsuarioService();
     // @Autowired é importante pois permite que o Spring "instancie" o objeto do tipo UsuarioService
     @Autowired
     private UsuarioService usuService;
 
-
     /*
     * o @GetMapping permite associoar o verbo GET com a rota /usuarios
     * */
     @GetMapping("usuarios")
-    public List<UsuarioDTO> getAllUsuarios(){
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuarios(){
 
-        // ISSO É VERDADEIRO?????
-        /*
-        * EM JAVA, NÃÃÃÃÃÃÃOOOO SE COMPARA STRING COM OPERADOR ==
-        * */
-//        if ("aaa" == "aaa"){
-//
-//        }
-//        if ("aaa".equalsIgnoreCase("aaa")){
-//
-//        }
-        usuService.mostrarMensagemService();
-        //return usuarios;
-//        ArrayList<UsuarioModel> usuarios = usuService.getAllUsuarios();
-//          MANIPULAR AQUI
-//        return usuarios;
+        // usuService.mostrarMensagemService();
 
-        return usuService.getAllUsuarios();
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
     }
 
     @PostMapping("usuarios")
-    public UsuarioDTO create(@Valid @RequestBody UsuarioDTO usuario){
-//        UsuarioModel u = usuService.create(usuario);
-//        return u;
-        // return usuService.create(usuario);
-        var t = usuService.create(usuario);
+    public ResponseEntity<UsuarioDTO> create(@Valid @RequestBody UsuarioDTO usuario){
 
-        return t;
+        var usuarioResponse = usuService.create(usuario);
+
+        return ResponseEntity.ok().body(usuarioResponse);
 
     } // create
 
     // /usuarios/1 -> o valor do id vai ser 1
 
     @PatchMapping("usuarios/{id}")
-    public UsuarioDTO update(@RequestBody UsuarioDTO usuarioBody,
+    public ResponseEntity<UsuarioDTO> update(@RequestBody UsuarioDTO usuarioBody,
                                 @PathVariable int id ){
-        //        UsuarioModel u = usuService.update(id, usuarioBody);
-        //        return u;
-        return usuService.update(id, usuarioBody);
+
+        var tiberio = usuService.update(id, usuarioBody);
+        return ResponseEntity.ok().body(tiberio);
     } // update()
 
     @DeleteMapping("usuarios/{id}")
-    public String delete(@PathVariable int id){
+    public ResponseEntity<String> delete(@PathVariable int id){
 
-//        String response = usuService.delete(id);
-//        return response;
-
-        return usuService.delete(id);
+        var resp = usuService.delete(id);
+        return ResponseEntity.ok().body(resp);
     } // delete
 
     // busca por apenas um usuário (pelo id)
     @GetMapping("usuarios/{id}")
-    public UsuarioDTO getOne(@PathVariable int id){
+    public ResponseEntity<UsuarioDTO> getOne(@PathVariable int id){
 
-//        UsuarioModel u = usuService.getOne(id);
-//        return u;
-
-        return usuService.getOne(id);
+        var u = usuService.getOne(id);
+        return ResponseEntity.ok().body(u);
 
     } // getOne
 
     // usuarios/nome/Fabrizio
     @GetMapping("usuarios/nome/{nomeBusca}")
-    public List<UsuarioDTO> fetchUsuariosByNome(@PathVariable String nomeBusca){
+    public ResponseEntity<List<UsuarioDTO>> fetchUsuariosByNome(@PathVariable String nomeBusca){
         // TODO: Não esquecer do ResponseEntity
         // TODO: fazer a busca usando o operador like
-        return usuService.fetchUsuariosByNome(nomeBusca);
+        var list = usuService.fetchUsuariosByNome(nomeBusca);
+        return ResponseEntity.ok().body(list);
+
+       // return ResponseEntity.ok().body(usuService.fetchUsuariosByNome(nomeBusca));
     }
 
     // usuarios/nome/Fabrizio
