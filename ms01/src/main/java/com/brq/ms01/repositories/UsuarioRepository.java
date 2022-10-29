@@ -25,10 +25,10 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> 
 
     // JPQL
     // SELECT * FROM usuarios u where u.nome_user like ?
-    @Query(value ="SELECT u FROM UsuarioModel u WHERE u.nome like :nomeBusca")
+    @Query(value ="SELECT u FROM UsuarioModel u WHERE u.nome like %:nomeBusca%")
     List<UsuarioModel> fetchByNomeLike(@Param("nomeBusca") String nome);
 
-    @Query(value = "SELECT * FROM usuarios u where u.nome_user like :nomeBusca", nativeQuery = true)
+    @Query(value = "SELECT * FROM usuarios u where u.nome_user like %:nomeBusca%", nativeQuery = true)
     List<UsuarioModel> fetchByNomeLikeNativeQuery(@Param("nomeBusca") String nome);
 
     List<UsuarioModel> findByNomeContainsAndEmailContains(String nome, String email);

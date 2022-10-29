@@ -173,10 +173,14 @@ public class UsuarioService {
 
     public List<UsuarioDTO> fetchUsuariosByNome(String nomeBusca){
 
+        // pesquisa pelo findBy
         //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
-        List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+        //List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
 
-        
+        // usando JPQL
+        List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+
+
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
         // Tipo da variável -
