@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 /*
@@ -42,6 +43,16 @@ public class UsuarioService {
         // Tipo da variável -
         for (UsuarioModel balde : list) {
             listDTO.add( balde.toDTO() );
+//            UsuarioDTO dto = UsuarioDTO
+//                    .builder()
+//                    .id(balde.getId())
+//                    .email(balde.getEmail())
+//                    .nome(balde.getNome())
+//                    .endereco( balde.getEndereco() == null ? null : balde.getEndereco().toDTO())
+//                    .consorcios( balde.getConsorcios().isEmpty() ? null : balde.getConsorcios().stream().map( x -> x.toDTO() ).collect(Collectors.toList()))
+//                    .build();
+//
+//            listDTO.add( dto );
         }
 
         return listDTO;

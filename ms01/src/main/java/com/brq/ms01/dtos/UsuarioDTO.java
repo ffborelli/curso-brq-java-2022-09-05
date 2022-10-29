@@ -2,6 +2,7 @@ package com.brq.ms01.dtos;
 
 import com.brq.ms01.models.UsuarioModel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
-
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,11 +31,9 @@ public class UsuarioDTO {
     @Pattern(regexp = "^\\([1-9]{2}\\) [9]{0,1}[2-9]{1}[0-9]{3}\\-[0-9]{4}$", message = "Telefone inválido")
     private String telefone;
 
-    private List<FinanciamentoDTO>  financiamentos;
-
-    private EnderecoDTO endereco;
-
-    private List<ConsorcioDTO> consorcios;
+//    private List<FinanciamentoDTO>  financiamentos;
+      private EnderecoDTO endereco;
+      private List<ConsorcioDTO> consorcios;
 
     public UsuarioModel toModel(){
 
