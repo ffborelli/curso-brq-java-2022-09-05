@@ -178,7 +178,10 @@ public class UsuarioService {
         //List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
 
         // usando JPQL
-        List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+        // List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+
+        // usando Native Query
+        List<UsuarioModel> list = usuRepository.fetchByNomeLikeNativeQuery(nomeBusca);
 
 
         List<UsuarioDTO> listDTO = new ArrayList<>();
