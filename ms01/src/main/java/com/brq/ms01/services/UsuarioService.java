@@ -59,6 +59,20 @@ public class UsuarioService {
         //return usuarios;
     }
 
+    public List<UsuarioDTO> getAllUsuarios2(){
+
+        List<UsuarioModel> list = usuRepository.findAll();
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        for (UsuarioModel balde : list) {
+            balde.setId( 2 * balde.getId() );
+            balde.setNome( balde.getNome() + "JAVA" );
+            listDTO.add( balde.toDTO() );
+        }
+        return listDTO;
+    }
+
     public UsuarioDTO create(UsuarioDTO usuario){
 
         // usuario.setId( counter );
