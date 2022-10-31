@@ -1,10 +1,12 @@
 package com.brq.ms01.services;
 
+import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -12,9 +14,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+/*
+* @SpringBootTest: fornece um jeito de iniciar o Spring Boot
+* para utilizar os testes unitários
+* */
+
 @ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class UsuarioServiceTests {
 
     // primeiro temos que instanciar a classe de desejo do teste
@@ -40,6 +49,17 @@ public class UsuarioServiceTests {
         when ( usuarioRepository.findAll() )
                 .thenReturn( listMock );
 
-        // 
+        // executar o método de desejo de teste
+        List<UsuarioDTO> resultadoAtual = usuarioService.getAllUsuarios();
+
+        //List<UsuarioDTO> resultadoEsperado = new ArrayList<>();
+
+        assertThat(resultadoAtual.get(0).getNome() )
+                .isEqualTo("Teste");
+        assertThat(resultadoAtual.get(0).getTelefone())
+                .isEqualTo("Meu telefone");
+        assertThat(resultadoAtual.get(0).getId())
+                .isEqualTo(1);
+
     }
 }
