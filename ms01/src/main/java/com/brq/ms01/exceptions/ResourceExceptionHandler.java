@@ -76,10 +76,24 @@ public class ResourceExceptionHandler {
             validationError.getErrors().add( fm );
         }
 
-        log.info(exception.getMessage());
-        log.info("Fabrizio é legal");
-
+//        log.info(exception.getMessage());
+//        log.info("Fabrizio é legal");
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationError);
+    }
+
+    @ExceptionHandler(DataCreateException.class)
+    public ResponseEntity<StandardError> dataCreateExceptionHandler(DataCreateException exception,
+                                                                    HttpServletRequest request){
+
+        StandardError standardError = new StandardError();
+        standardError.setTimestamp(new Date());
+        standardError.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        standardError.setError("Erro ao inserir o registro");
+        standardError.setMessage(exception.getMessage());
+        standardError.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardError);
+
     }
 }
