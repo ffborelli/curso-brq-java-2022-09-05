@@ -96,14 +96,21 @@ public class UsuarioService {
             // return "POST Usuários";
             //return usuario;
             log.info(usuarioSalvo.toString());
+
+            //caminho feliz
+            return usuarioSalvo.toDTO();
         }
         catch (Exception exception){
             log.error("Erro ao salvar o usuário: " + exception.getMessage());
             //log.error("Erro ao salvar o usuário: ");
             throw new RuntimeException("Erro ao salvar no banco de dados");
         }
+        /* O famoso NULLPOIIIINTERRRREXCEPPTIIIONN (NullPointException)
+        * quando tentamos executar um método de uma variável nula,
+        * acontece a exceção NullPointException
+        * */
+        //return null;
 
-        return usuarioSalvo.toDTO();
     }
 
     public UsuarioDTO update(int id, UsuarioDTO usuarioBody)  {
