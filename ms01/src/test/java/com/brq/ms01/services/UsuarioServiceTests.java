@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -135,5 +136,41 @@ public class UsuarioServiceTests {
         // testar o método em questão
         assertThrows( DataCreateException.class,
                 () -> usuarioService.create(null)  );
+    }
+
+    @Test
+    void updateWhenSucess(){
+
+        int id = 1;
+
+        UsuarioModel usuarioModelOriginal = new UsuarioModel();
+        usuarioModelOriginal.setNome("nome");
+        usuarioModelOriginal.setEmail("email");
+        usuarioModelOriginal.setTelefone("telefone");
+
+        Optional<UsuarioModel> optional = Optional.of(usuarioModelOriginal);
+
+        UsuarioModel usuarioModelAlterado = new UsuarioModel();
+        usuarioModelAlterado.setNome("nome-alterado");
+        usuarioModelAlterado.setEmail("email-alterado");
+        usuarioModelAlterado.setTelefone("telefone-alterado");
+
+
+        when( usuarioRepository.findById(id) )
+                .thenReturn(optional);
+
+        when(usuarioRepository.save( usuarioModelAlterado ))
+                .thenReturn(usuarioModelAlterado);
+
+        // testar o método em questão
+        var usuarioDTO = usuarioService
+                .update(id, usuarioModelAlterado.toDTO() );
+
+        // verificando se o teste deu certo
+        assertThat( usuarioDTO.getNome() )
+                .isEqualTo( usuarioModelAlterado.getNome() );
+        assertThat( usuarioDTO.getEmail() )
+                .isEqualTo( usuarioDTO.getEmail() );
+
     }
 }
