@@ -62,4 +62,35 @@ public class UsuarioServiceTests {
                 .isEqualTo(1);
 
     }
+    @Test
+    void getAllUsuarios2Test(){
+
+        // o primeiro passo é simular (mockar) os objetos que preciso
+        List<UsuarioModel> listMock = new ArrayList<>();
+
+        String nome = "Teste";
+        int id = 1;
+
+        UsuarioModel usuarioModel = new UsuarioModel();
+        usuarioModel.setId(id);
+        usuarioModel.setNome(nome);
+        usuarioModel.setTelefone("Meu telefone");
+
+        listMock.add(usuarioModel);
+
+        // quando o findAll da camada repository for acionado, retorno a lista acima
+        when ( usuarioRepository.findAll() )
+                .thenReturn( listMock );
+
+        // executar o método de desejo de teste
+        List<UsuarioDTO> resultadoAtual = usuarioService.getAllUsuarios2();
+
+        assertThat(resultadoAtual.get(0).getNome() )
+                .isEqualTo(nome + "JAVA");
+        assertThat(resultadoAtual.get(0).getTelefone())
+                .isEqualTo(usuarioModel.getTelefone());
+        assertThat(resultadoAtual.get(0).getId())
+                .isEqualTo(id * 2);
+
+    }
 }
