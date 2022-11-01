@@ -1,6 +1,7 @@
 package com.brq.ms01.services;
 
 import com.brq.ms01.dtos.UsuarioDTO;
+import com.brq.ms01.exceptions.DataCreateException;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
 import org.junit.jupiter.api.Test;
@@ -124,14 +125,15 @@ public class UsuarioServiceTests {
 
     }
 
+    /*Quando entrar dentro do catch*/
     @Test
     void createWhenFail(){
-
         // mockar o uso do save
-        when(usuarioRepository.save( null )).thenThrow( new DataIntegrityViolationException("") );
+        when(usuarioRepository.save( null ))
+                .thenThrow( new DataCreateException("Uma mensagem") );
 
         // testar o método em questão
-
-        assertThrows( RuntimeException.class, () -> usuarioService.create(null)  );
+        assertThrows( DataCreateException.class,
+                () -> usuarioService.create(null)  );
     }
 }
