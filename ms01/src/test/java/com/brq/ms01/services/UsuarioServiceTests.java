@@ -93,4 +93,32 @@ public class UsuarioServiceTests {
                 .isEqualTo(id * 2);
 
     }
+
+    @Test
+    void createWhenSuccess(){
+
+        String email = "email";
+        String nome = "nome";
+
+        // usuário para mockar a repository
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setEmail(email);
+        dto.setNome(nome);
+
+        UsuarioModel model = dto.toModel();
+        model.setId(1);
+
+        when(usuarioRepository.save( dto.toModel() ))
+                .thenReturn(model);
+
+        // chamar o método a ser testado
+
+        UsuarioDTO salvoDTO = usuarioService.create(dto);
+
+        //verificar se está correto
+        assertThat(salvoDTO.getNome()).isEqualTo(nome);
+        assertThat(salvoDTO.getEmail()).isEqualTo(email);
+        assertThat(salvoDTO.getId()).isGreaterThan(0);
+
+    }
 }

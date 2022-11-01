@@ -234,4 +234,22 @@ public class UsuarioService {
 
         return listDTO;
     }
+
+    public List<UsuarioDTO> fetchUsuariosByNomeAndEmailAndEndereco(String nomeBusca, String emailBusca, String ruaBusca){
+
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        //List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+        // Usando JPQL
+        //List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+        // usando Native Query
+        List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContainsAndEnderecoRuaContains(nomeBusca, emailBusca, ruaBusca);
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
+    }
 }
