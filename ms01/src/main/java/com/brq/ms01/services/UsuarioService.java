@@ -100,6 +100,7 @@ public class UsuarioService {
         catch (Exception exception){
             log.error("Erro ao salvar o usuário: " + exception.getMessage());
             //log.error("Erro ao salvar o usuário: ");
+            throw new RuntimeException("Erro ao salvar no banco de dados");
         }
 
         return usuarioSalvo.toDTO();
