@@ -1,6 +1,7 @@
 package com.brq.ms01.services;
 
 import com.brq.ms01.dtos.UsuarioDTO;
+import com.brq.ms01.exceptions.DataCreateException;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -103,7 +104,8 @@ public class UsuarioService {
         catch (Exception exception){
             log.error("Erro ao salvar o usuário: " + exception.getMessage());
             //log.error("Erro ao salvar o usuário: ");
-            throw new RuntimeException("Erro ao salvar no banco de dados");
+            //throw new RuntimeException("Erro ao salvar no banco de dados");
+            throw new DataCreateException("Erro ao salvar usuário");
         }
         /* O famoso NULLPOIIIINTERRRREXCEPPTIIIONN (NullPointException)
         * quando tentamos executar um método de uma variável nula,
