@@ -117,6 +117,7 @@ public class UsuarioService {
 
     public UsuarioDTO update(int id, UsuarioDTO usuarioBody)  {
 
+        // TODO: fazer uma exceção para quando não encontrar o dado. Sugestão: ObjNotFountException. Retornar status 404
         UsuarioModel usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
 

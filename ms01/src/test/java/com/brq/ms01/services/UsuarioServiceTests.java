@@ -173,4 +173,26 @@ public class UsuarioServiceTests {
                 .isEqualTo( usuarioDTO.getEmail() );
 
     }
+
+    void updateWhenFail(){
+
+        int id = 1;
+        // vamos criar um Optional vazio para retornar no findByID
+
+        Optional<UsuarioModel> optional = Optional.empty();
+
+        UsuarioDTO body = new UsuarioDTO();
+        body.setNome("nome");
+        body.setEmail("email");
+        body.setTelefone("telefone");
+
+        /* quando o findById for chamado, retornaremos
+        * um optional vazio*/
+        when( usuarioRepository.findById(id) )
+                .thenReturn(optional);
+
+        // chamar método de teste
+        assertThrows( RuntimeException.class ,
+                () -> usuarioService.update(id, body) );
+    }
 }
