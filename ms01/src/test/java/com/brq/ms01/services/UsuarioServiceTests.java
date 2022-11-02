@@ -174,6 +174,7 @@ public class UsuarioServiceTests {
 
     }
 
+    @Test
     void updateWhenFail(){
 
         int id = 1;
@@ -194,5 +195,6 @@ public class UsuarioServiceTests {
         // chamar método de teste
         assertThrows( RuntimeException.class ,
                 () -> usuarioService.update(id, body) );
+
     }
 }
