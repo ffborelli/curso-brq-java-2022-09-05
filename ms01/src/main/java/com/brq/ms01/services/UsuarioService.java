@@ -177,6 +177,9 @@ public class UsuarioService {
 //        } // for
 //        return "Usuário não encontrado";
 
+        usuRepository.findById(id)
+                .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
+
         usuRepository.deleteById(id);
         return "Usuário delatado com sucesso!";
     }

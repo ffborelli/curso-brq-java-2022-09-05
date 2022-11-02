@@ -19,7 +19,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /*
 * @SpringBootTest: fornece um jeito de iniciar o Spring Boot
@@ -193,8 +193,37 @@ public class UsuarioServiceTests {
                 .thenReturn(optional);
 
         // chamar método de teste
+        // deve retornar uma exceção
         assertThrows( RuntimeException.class ,
                 () -> usuarioService.update(id, body) );
-
     }
+
+    @Test
+    void deleteWhenSuccessTest(){
+
+        int id = 1;
+
+        UsuarioModel usuarioModelOriginal = new UsuarioModel();
+        usuarioModelOriginal.setNome("nome");
+        usuarioModelOriginal.setEmail("email");
+        usuarioModelOriginal.setTelefone("telefone");
+
+        Optional<UsuarioModel> optional = Optional.of(usuarioModelOriginal);
+
+        // mockar
+        when(usuarioRepository.findById(id))
+                .thenReturn(optional);
+
+        // chamar o método a ser testado
+        String response = usuarioService.delete(id);
+
+        // verificar se o resultado é o esperado
+        assertThat(response).isEqualTo("Usuário delatado com sucesso!");
+
+        // verificar se o método deleteById foi executado 1 única vez
+        // esta verificação somente pode ser feita em objetos mockados (@MockBean)
+        verify( usuarioRepository, times(1) )
+                .deleteById(id);
+    }
+
 }
