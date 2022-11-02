@@ -226,4 +226,27 @@ public class UsuarioServiceTests {
                 .deleteById(id);
     }
 
+    @Test
+    void deleteWhenFailTest(){
+
+        int id = 1;
+
+        Optional<UsuarioModel> optional = Optional.empty();
+
+        when(usuarioRepository.findById(id))
+                .thenReturn(optional);
+
+        assertThrows( RuntimeException.class ,
+                () -> usuarioService.delete(id) );
+    }
+
+    @Test
+    void getOneWhenSuccessTest(){
+
+    }
+
+    @Test
+    void getOneWhenFailTest(){
+
+    }
 }
