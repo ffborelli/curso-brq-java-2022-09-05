@@ -236,6 +236,7 @@ public class UsuarioServiceTests {
         when(usuarioRepository.findById(id))
                 .thenReturn(optional);
 
+        // verificar se vai estourar exceção
         assertThrows( RuntimeException.class ,
                 () -> usuarioService.delete(id) );
     }
@@ -243,10 +244,43 @@ public class UsuarioServiceTests {
     @Test
     void getOneWhenSuccessTest(){
 
+        int id = 1;
+
+        UsuarioModel usuarioModelOriginal = new UsuarioModel();
+        usuarioModelOriginal.setNome("nome");
+        usuarioModelOriginal.setEmail("email");
+        usuarioModelOriginal.setTelefone("telefone");
+
+        Optional<UsuarioModel> optional = Optional.of(usuarioModelOriginal);
+
+        when(usuarioRepository.findById(id))
+                .thenReturn(optional);
+
+        // chamar o método a ser testado
+        UsuarioDTO usuarioDTO = usuarioService.getOne(id);
+
+        //verificar se o método deu certo
+
+        assertThat( usuarioDTO.getEmail() )
+                .isEqualTo( usuarioModelOriginal.getEmail());
+        assertThat( usuarioDTO.getNome() )
+                .isEqualTo( usuarioModelOriginal.getNome());
+        assertThat( usuarioDTO.getTelefone() )
+                .isEqualTo( usuarioModelOriginal.getTelefone());
     }
 
     @Test
     void getOneWhenFailTest(){
 
+        int id = 1;
+
+        Optional<UsuarioModel> optional = Optional.empty();
+
+        when(usuarioRepository.findById(id))
+                .thenReturn(optional);
+
+        // verificar se vai estourar exceção
+        assertThrows( RuntimeException.class ,
+                () -> usuarioService.getOne(id) );
     }
 }
