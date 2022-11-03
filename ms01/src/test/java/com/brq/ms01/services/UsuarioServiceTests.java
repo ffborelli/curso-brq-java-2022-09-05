@@ -14,9 +14,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -282,5 +284,43 @@ public class UsuarioServiceTests {
         // verificar se vai estourar exceção
         assertThrows( RuntimeException.class ,
                 () -> usuarioService.getOne(id) );
+    }
+
+    @Test
+    void fetchUsuariosByNomeTest(){
+
+        String nomeBusca = "aaa";
+
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setEmail("email");
+        usuario.setTelefone("telefone");
+        usuario.setNome("nome");
+
+//        List<UsuarioModel> list = new ArrayList<>();
+//        list.add(usuarioModel);
+//        list.add(usuarioModel);
+
+        List<UsuarioModel> listUsuariosMockados = Arrays.asList( usuario );
+
+        // mockando a camada repository
+
+        when(usuarioRepository.fetchByNomeLikeNativeQuery(nomeBusca))
+                .thenReturn(listUsuariosMockados);
+
+        // chamar o método a ser testado
+        List<UsuarioDTO> dtos = usuarioService.fetchUsuariosByNome(nomeBusca);
+
+        //verificar se o retorno é o esperado
+
+        assertThat( dtos.get(0).getTelefone() )
+                .isEqualTo(listUsuariosMockados.get(0).getTelefone());
+
+        assertThat( dtos.get(0).getEmail() )
+                .isEqualTo(listUsuariosMockados.get(0).getEmail());
+
+        assertThat( dtos.get(0).getNome() )
+                .isEqualTo(listUsuariosMockados.get(0).getNome());
+
+        assertThat( dtos.isEmpty() ).isEqualTo(false);
     }
 }
