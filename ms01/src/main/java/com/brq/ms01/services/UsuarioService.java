@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 
 /*
 * A camada Service é responsável por armazenar as regras de negócio da aplicação
