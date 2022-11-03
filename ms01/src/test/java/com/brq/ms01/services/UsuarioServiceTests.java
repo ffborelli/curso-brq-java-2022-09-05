@@ -323,4 +323,36 @@ public class UsuarioServiceTests {
 
         assertThat( dtos.isEmpty() ).isEqualTo(false);
     }
+
+    @Test
+    void fetchUsuariosByNomeAndEmailTest(){
+
+        String nomeBusca = "nome-busca";
+        String emailBusca = "email-busca";
+
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setEmail("email");
+        usuario.setTelefone("telefone");
+        usuario.setNome("nome");
+
+        List<UsuarioModel> listUsuariosMockados = Arrays.asList( usuario );
+
+        when(usuarioRepository.findByNomeContainsAndEmailContains(nomeBusca, emailBusca))
+                .thenReturn(listUsuariosMockados);
+
+        // chamar o método a ser testado
+        List<UsuarioDTO> dtos = usuarioService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+
+        // verificar se o método está correto
+        assertThat( dtos.get(0).getTelefone() )
+                .isEqualTo(listUsuariosMockados.get(0).getTelefone());
+
+        assertThat( dtos.get(0).getEmail() )
+                .isEqualTo(listUsuariosMockados.get(0).getEmail());
+
+        assertThat( dtos.get(0).getNome() )
+                .isEqualTo(listUsuariosMockados.get(0).getNome());
+
+        assertThat( dtos.isEmpty() ).isEqualTo(false);
+    }
 }
