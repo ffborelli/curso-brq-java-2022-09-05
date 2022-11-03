@@ -2,6 +2,7 @@ package com.brq.ms01.services;
 
 import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.exceptions.DataCreateException;
+import com.brq.ms01.models.EnderecoModel;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
 import org.junit.jupiter.api.Test;
@@ -46,6 +47,11 @@ public class UsuarioServiceTests {
         usuarioModel.setId(1);
         usuarioModel.setNome("Teste");
         usuarioModel.setTelefone("Meu telefone");
+
+//        EnderecoModel end = new EnderecoModel();
+//        end.setRua("rua");
+//
+//        usuarioModel.setEndereco(end);
 
         listMock.add(usuarioModel);
 

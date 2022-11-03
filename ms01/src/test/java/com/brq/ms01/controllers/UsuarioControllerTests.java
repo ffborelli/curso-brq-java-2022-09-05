@@ -57,4 +57,24 @@ public class UsuarioControllerTests {
         verify(service, times(1))
                 .getAllUsuarios();
     }
+
+    @Test
+    void createWhenSuccess(){
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setNome("nome");
+        usuarioDTO.setEmail("email");
+        usuarioDTO.setTelefone("(11) 98273-3817");
+
+        // mockando a service
+        when(service.create(usuarioDTO))
+                .thenReturn(usuarioDTO);
+
+        // chamando o método a ser testado
+        final var response = controller.create(usuarioDTO);
+
+        // validando a resposta
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(usuarioDTO);
+    }
 }
