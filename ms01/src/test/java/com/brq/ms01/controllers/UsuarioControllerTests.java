@@ -112,7 +112,7 @@ public class UsuarioControllerTests {
     }
 
     @Test
-    void deleteTestWhenSuccess(){
+    void deleteTestWhenSuccessTest(){
         int id = 1;
 
         when(service.delete(id))
@@ -127,6 +127,21 @@ public class UsuarioControllerTests {
 
         assertThat(response.getBody()).isEqualTo("texto");
     }
+
+    @Test
+    void deleteWhenFailTest(){
+        // dado que
+        int id = 1;
+
+        // quando
+        when(service.delete(id))
+                .thenThrow(new RuntimeException("exception"));
+
+        // então (teste do método)
+        assertThrows( RuntimeException.class,
+                () -> service.delete(id));
+    }
+
 
     private UsuarioDTO createValidUsuarioDTO(){
 
