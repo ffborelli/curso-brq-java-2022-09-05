@@ -142,6 +142,30 @@ public class UsuarioControllerTests {
                 () -> service.delete(id));
     }
 
+    @Test
+    void getOneWhenSucess(){
+        //dado que
+        int id = 1;
+
+        final var usuarioDTO
+                = createValidUsuarioDTO();
+
+        //quando
+        when(service.getOne(id))
+                .thenReturn(usuarioDTO);
+
+        // então
+        final var response
+                = controller.getOne(id);
+
+        // verificar o resultado
+        assertThat( response.getStatusCode() )
+                .isEqualTo(HttpStatus.OK);
+
+        assertThat( response.getBody() )
+                .isEqualTo( usuarioDTO );
+    }
+
 
     private UsuarioDTO createValidUsuarioDTO(){
 
