@@ -2,17 +2,13 @@ package com.brq.ms01.controllers;
 
 import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.services.UsuarioService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -164,6 +160,22 @@ public class UsuarioControllerTests {
 
         assertThat( response.getBody() )
                 .isEqualTo( usuarioDTO );
+    }
+
+    @Test
+    void getOneWhenFail(){
+
+        //dado que
+        int id = 1;
+
+        // mockito
+        // quando
+        when(service.getOne(id))
+                .thenThrow( new RuntimeException("ex"));
+
+        // então
+        assertThrows( RuntimeException.class ,
+                ()-> controller.getOne(id) ) ;
     }
 
 
