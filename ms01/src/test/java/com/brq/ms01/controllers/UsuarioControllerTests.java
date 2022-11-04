@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -176,6 +178,57 @@ public class UsuarioControllerTests {
         // então
         assertThrows( RuntimeException.class ,
                 ()-> controller.getOne(id) ) ;
+    }
+
+    @Test
+    void fetchUsuariosByNomeTest(){
+
+        // dado que
+        var nomeBusca = "nome";
+
+        final var usuarioDTO = createValidUsuarioDTO();
+        final var listUsuarios = Arrays.asList(usuarioDTO);
+//      final var listUsuarios = Arrays.asList( createValidUsuarioDTO() );
+
+        // quando
+        when(service.fetchUsuariosByNome(nomeBusca))
+                .thenReturn(listUsuarios);
+
+        // então
+        final var response
+                = controller.fetchUsuariosByNome(nomeBusca);
+
+        // validar a reposta
+
+        assertThat( response.getStatusCode())
+                .isEqualTo(HttpStatus.OK);
+        assertThat( response.getBody())
+                .isEqualTo( response.getBody() );
+
+    }
+
+    @Test
+    void fetchUsuariosByNomeAndEmailTest(){
+
+        // dado que
+        final var nomeBusca = "nome";
+        final var emailBusca = "email";
+
+        final var listUsuarios
+                = Arrays.asList( createValidUsuarioDTO() );
+
+        // quando
+        when(service.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca))
+                .thenReturn(listUsuarios);
+
+        // então
+        final var response = controller.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+
+        // verificar a resposta
+        assertThat(response.getStatusCode())
+                .isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody())
+                .isEqualTo(listUsuarios);
     }
 
 
