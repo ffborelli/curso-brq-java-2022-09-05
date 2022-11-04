@@ -111,6 +111,23 @@ public class UsuarioControllerTests {
                 .isEqualTo(usuarioDTO);
     }
 
+    @Test
+    void deleteTestWhenSuccess(){
+        int id = 1;
+
+        when(service.delete(id))
+                .thenReturn("texto");
+
+        // testar método
+
+        final var response = controller.delete(id);
+
+        assertThat(response.getStatusCode())
+                .isEqualTo(HttpStatus.OK);
+
+        assertThat(response.getBody()).isEqualTo("texto");
+    }
+
     private UsuarioDTO createValidUsuarioDTO(){
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
@@ -120,5 +137,6 @@ public class UsuarioControllerTests {
 
         return usuarioDTO;
     }
+
 
 }
