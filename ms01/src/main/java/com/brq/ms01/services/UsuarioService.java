@@ -174,8 +174,13 @@ public class UsuarioService {
 //        } // for
 //        return "Usuário não encontrado";
 
-        usuRepository.findById(id)
+        final var usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
+
+        //log.info("deletando usuário id: " + usuario.getId() + " com sucesso, email " + usuario.getEmail()  );
+
+        log.info("deletando usuário id: {} com sucesso, email : {}",
+                    usuario.getId(), usuario.getEmail() );
 
         usuRepository.deleteById(id);
         return "Usuário delatado com sucesso!";
