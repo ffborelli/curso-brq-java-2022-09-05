@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
@@ -358,5 +359,45 @@ public class UsuarioServiceTests {
                 .isEqualTo(listUsuariosMockados.get(0).getNome());
 
         assertThat( dtos.isEmpty() ).isEqualTo(false);
+    }
+
+    @Test
+    void fetchUsuariosByNomeAndEmailAndEnderecoTest(){
+
+        // dado que
+        String nomeBusca = "nome-busca";
+        String emailBusca = "email-busca";
+        String enderecoBusca = "endereco-busca";
+
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setEmail("email");
+        usuario.setTelefone("telefone");
+        usuario.setNome("nome");
+
+        List<UsuarioModel> listUsuariosMockados = Arrays.asList( usuario );
+
+        when(usuarioRepository.findByNomeContainsAndEmailContainsAndEnderecoRuaContains(nomeBusca, emailBusca,enderecoBusca ))
+                .thenReturn(listUsuariosMockados);
+
+        // chamar o método a ser testado
+        List<UsuarioDTO> dtos = usuarioService.fetchUsuariosByNomeAndEmailAndEndereco(nomeBusca, emailBusca, enderecoBusca);
+
+        // verificar se o método está correto
+        assertThat( dtos.get(0).getTelefone() )
+                .isEqualTo(listUsuariosMockados.get(0).getTelefone());
+
+        assertThat( dtos.get(0).getEmail() )
+                .isEqualTo(listUsuariosMockados.get(0).getEmail());
+
+        assertThat( dtos.get(0).getNome() )
+                .isEqualTo(listUsuariosMockados.get(0).getNome());
+
+        assertThat( dtos.isEmpty() ).isEqualTo(false);
+
+    }
+
+    @Test
+    void mostrarMensagemServiceTest(){
+        assertDoesNotThrow( () -> usuarioService.mostrarMensagemService() );
     }
 }

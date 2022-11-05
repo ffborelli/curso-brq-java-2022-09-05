@@ -19,14 +19,15 @@ import java.util.List;
 public class UsuarioService {
 
     // ESTE ARRAYLIST É DIDÁTICO, POIS ESTÁ SIMULANDO UM BANCO DE DADOS
-    private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
-    private int counter = 1;
+//    private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
+//    private int counter = 1;
 
     @Autowired
     private UsuarioRepository usuRepository;
 
     public void mostrarMensagemService(){
-        System.out.println("Mensagem do serviço");
+        //System.out.println("Mensagem do serviço");
+        log.info("Mensagem do serviço");
     }
 
     public List<UsuarioDTO> getAllUsuarios(){
