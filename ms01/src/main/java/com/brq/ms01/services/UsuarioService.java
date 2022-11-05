@@ -16,7 +16,7 @@ import java.util.List;
 * */
 @Slf4j
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService {
 
     // ESTE ARRAYLIST É DIDÁTICO, POIS ESTÁ SIMULANDO UM BANCO DE DADOS
 //    private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
