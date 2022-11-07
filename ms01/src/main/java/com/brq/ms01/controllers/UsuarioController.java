@@ -1,7 +1,7 @@
 package com.brq.ms01.controllers;
 
 import com.brq.ms01.dtos.UsuarioDTO;
-import com.brq.ms01.services.UsuarioService;
+import com.brq.ms01.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,8 @@ public class UsuarioController {
     // private UsuarioService usuService = new UsuarioService();
     // @Autowired é importante pois permite que o Spring "instancie" o objeto do tipo UsuarioService
     @Autowired
-    private UsuarioService usuService;
+    //private UsuarioService usuService;
+    private IUsuarioService usuService;
 
     /*
     * o @GetMapping permite associoar o verbo GET com a rota /usuarios
