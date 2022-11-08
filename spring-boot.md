@@ -239,7 +239,7 @@ int a, int b : parametros
 
 Antes de podermos entender o valor de **@Component**, primeiro precisamos entender um pouco sobre o Spring ApplicationContext.
 
-Spring ApplicationContext é onde Spring mantém instâncias de objetos que ele identificou para serem gerenciados e distribuídos automaticamente. Estes são chamados de **BEANS**.
+Spring ApplicationContext é onde Spring mantém instâncias de objetos que ele identificou para serem gerenciados e distribuídos automaticamente. Estes são chamados de **BEANS** (@Beans).
 
 O gerenciamento do bean e a injeção de dependência são alguns dos principais recursos do Spring.
 
@@ -248,15 +248,15 @@ Usando o princípio de Inversão de Controle, o Spring coleta as instâncias do 
 A capacidade de usar anotações como **@Autowired** para injetar beans gerenciados pelo Spring em nosso aplicativo é uma força motriz para a criação do nosso código no Spring.
 
 
-- @Componente
+- @Component
 
 @Component é uma anotação que permite o Spring detectar automaticamente nossos beans personalizados.
 
 Em outras palavras, sem ter que escrever nenhum código explícito, o Spring irá:
 
-- Examine nosso aplicativo para classes anotadas com @Component
-- Instancie-os e injete quaisquer dependências especificadas neles
-- Injete-os sempre que necessário
+- Examinar nosso aplicativo para classes anotadas com @Component
+- Instanciar e injetae quaisquer dependências especificadas neles (com classes dos objetos @Component)
+- Injetar os objetos na nossa aplicação sempre que necessário
 
 
 
