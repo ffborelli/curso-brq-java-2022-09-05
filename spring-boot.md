@@ -143,7 +143,7 @@ A Injeção de Dependência é uma técnica de desenvolvimento utilizada para ev
 - **GenerationType.IDENTITY:** Informamos ao provedor de persistência que os valores a serem atribuídos ao identificador único serão gerados pela coluna de auto incremento do banco de dados. Assim, um valor para o identificador é gerado para cada registro inserido no banco. Alguns bancos de dados podem não suportar essa opção. 
 - **@Id:** é utilizada para informar ao JPA qual campo/atributo de uma entidade estará relacionado à chave primária da respectiva tabela no banco de dados. 
 - **@ControllerAdvice**: permite manipular exceções de forma global. Para cada tipo de exceção, podemos manipular desde o status até a mensagem de retorno.
-
+- **@Slf4j**: é uma abstração JAVA para criar **logging** das aplicações de uma forma simples 
 
 # DTO
 
@@ -235,7 +235,7 @@ int a, int b : parametros
 - Na entidade (tabela de dados) que possui a chave estrangeira, colocar a anotação @JoinTable
 - Na outra entidade, usar o mapped by
 
-# @Component 
+# @Component
 
 Antes de podermos entender o valor de **@Component**, primeiro precisamos entender um pouco sobre o Spring ApplicationContext.
 
