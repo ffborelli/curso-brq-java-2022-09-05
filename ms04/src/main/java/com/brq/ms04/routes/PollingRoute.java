@@ -19,7 +19,8 @@ public class PollingRoute extends RouteBuilder {
         // após o caracter ?, podemos colocar os parâmetros do conector do camel
         // ex: period=5000 -> executar a cada 5 segundos
         from("timer:polling?period=5000")
-                .to("https://economia.awesomeapi.com.br/json/last/USD-BRL")
+                //.to("https://economia.awesomeapi.com.br/json/last/USD-BRL")
+                .to(url)
                 .log("${body}");
     }
 }
