@@ -144,7 +144,7 @@ A Injeção de Dependência é uma técnica de desenvolvimento utilizada para ev
 - **@Id:** é utilizada para informar ao JPA qual campo/atributo de uma entidade estará relacionado à chave primária da respectiva tabela no banco de dados. 
 - **@ControllerAdvice**: permite manipular exceções de forma global. Para cada tipo de exceção, podemos manipular desde o status até a mensagem de retorno.
 - **@Slf4j**: é uma abstração JAVA para criar **logging** das aplicações de uma forma simples 
-
+- **@Value**:  anotação permite injetar valores em campos (variáveis JAVA) dentro dos beans gerenciados pelo Spring. 
 # DTO
 
 Data Transfer Object **(DTO)** ou simplesmente Transfer Object é um padrão de projetos bastante usado em Java para o transporte de dados entre diferentes componentes de um sistema, diferentes instâncias ou processos de um sistema distribuído ou diferentes sistemas via serialização.
@@ -258,5 +258,13 @@ Em outras palavras, sem ter que escrever nenhum código explícito, o Spring ir�
 - Instanciar e injetae quaisquer dependências especificadas neles (com classes dos objetos @Component)
 - Injetar os objetos na nossa aplicação sempre que necessário
 
+# Apache Camel
 
+- A mensagem contém dados que serão transferidos para uma rota. Cada mensagem tem um identificador exclusivo e é construído a partir de um corpo, cabeçalhos e anexos.
+
+- **Exchange** é criado quando uma mensagem é recebida por um consumidor durante o processo de roteamento. 
+
+- **Endpoint** é um canal através do qual o sistema pode receber ou enviar uma mensagem. Ele pode se referir a um URI de serviço da Web, URI de fila, arquivo, endereço de e-mail, etc.
+
+- **Processor** é uma interface Java que é usada para adicionar lógica de integração personalizada a uma rota. Ele contém um único método de processo usado para pré-formar a lógica de negócios personalizada em uma mensagem recebida por um consumidor.
 
