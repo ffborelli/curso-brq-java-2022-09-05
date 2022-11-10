@@ -38,6 +38,26 @@ public class UsuarioController {
         return ResponseEntity.ok().body(usuarios);
     }
 
+    @GetMapping("v1/usuarios")
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuariosV2(){
+
+        // usuService.mostrarMensagemService();
+
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
+    }
+
+    @GetMapping("v2/usuarios")
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuariosV3(){
+
+        // usuService.mostrarMensagemService();
+
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
+    }
+
     @PostMapping("usuarios")
     public ResponseEntity<UsuarioDTO> create(@Valid @RequestBody UsuarioDTO usuario){
 
