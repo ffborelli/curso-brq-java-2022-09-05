@@ -1,4 +1,4 @@
-package com.brq.ms04.models;
+package com.brq.ms04.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class USDBRL{
+public class USDBRLDTO {
     private String code;
     private String codein;
     private String name;
