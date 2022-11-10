@@ -1,5 +1,6 @@
 package com.brq.ms04.routes;
 
+import com.brq.ms04.beans.USDBRLBean;
 import com.brq.ms04.processors.PollingProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.builder.RouteBuilder;
@@ -22,8 +23,8 @@ public class PollingRoute extends RouteBuilder {
         from("timer:polling?period=5000")
                 //.to("https://economia.awesomeapi.com.br/json/last/USD-BRL")
                 .to(url)
-
-                .process( new PollingProcessor() )
+                .bean(USDBRLBean.class, "save")
+                //.process( new PollingProcessor() )
                 //.process( new PollingProcessor2() )
                 .log("${body}");
     }
