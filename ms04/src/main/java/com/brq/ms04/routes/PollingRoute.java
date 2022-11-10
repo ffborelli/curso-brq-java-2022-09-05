@@ -1,6 +1,7 @@
 package com.brq.ms04.routes;
 
 import com.brq.ms04.processors.PollingProcessor;
+import com.brq.ms04.processors.PollingProcessor2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +24,7 @@ public class PollingRoute extends RouteBuilder {
                 //.to("https://economia.awesomeapi.com.br/json/last/USD-BRL")
                 .to(url)
                 .process( new PollingProcessor() )
+                //.process( new PollingProcessor2() )
                 .log("${body}");
     }
 }
