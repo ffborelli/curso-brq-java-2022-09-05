@@ -1,7 +1,6 @@
 package com.brq.ms04.routes;
 
 import com.brq.ms04.processors.PollingProcessor;
-import com.brq.ms04.processors.PollingProcessor2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
