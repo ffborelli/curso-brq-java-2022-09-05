@@ -22,7 +22,7 @@ public class USDBRLDTO {
     private String timestamp;
     private String create_date;
 
-    public USDBRLModel toDTO(){
+    public USDBRLModel toModel(){
         final var mapper = new ModelMapper();
 
         return mapper.map(this, USDBRLModel.class);

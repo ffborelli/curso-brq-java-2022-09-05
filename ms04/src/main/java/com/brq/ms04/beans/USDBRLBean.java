@@ -22,13 +22,10 @@ public class USDBRLBean {
             final var dto = objectMapper
                     .readValue(messageIn, CotacaoUSDDTO.class);
 
-            repository.save(dto.getUSDBRL().)
+            return repository.save(dto.getUSDBRL().toModel());
         }
         catch (Exception e){
             throw new RuntimeException("Erro ao converter mensagem");
         }
-        // paramos para chamar o método save
-
-
     }
 }
