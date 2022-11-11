@@ -17,7 +17,7 @@ import java.util.Random;
 @Slf4j
 @Component
 public class ActiveMQSenderRoute extends RouteBuilder {
-    
+
     @Override
     public void configure() throws Exception {
 
