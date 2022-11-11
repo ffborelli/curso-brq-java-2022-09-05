@@ -1,0 +1,6 @@
+31c6417c46843a53a768aa612366dd9527f23102
+
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=ms01 \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=31c6417c46843a53a768aa612366dd9527f23102
