@@ -25,15 +25,15 @@ public class PollingRoute extends RouteBuilder {
 
         // configure we want to use servlet as the component for the rest DSL
         // and we enable json binding mode
-        restConfiguration()
-                .contextPath("/camel-rest-jpa").apiContextPath("/api-doc")
-                .bindingMode(RestBindingMode.json);
+//        restConfiguration()
+//                .contextPath("/camel-rest-jpa").apiContextPath("/api-doc")
+//                .bindingMode(RestBindingMode.json);
 
         log.info("O valor da URL é {}", url);
 
         // após o caracter ?, podemos colocar os parâmetros do conector do camel
         // ex: period=5000 -> executar a cada 5 segundos
-        from("timer:polling?period=5000")
+        from("timer:polling?period=50000")
                 //.to("https://economia.awesomeapi.com.br/json/last/USD-BRL")
                 .to(url)
                 .process( new PollingProcessor() )
