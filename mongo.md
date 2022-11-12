@@ -117,6 +117,44 @@ Alterar todos os documentos que contenham SH
     db.usuarios.deleteOne({nome: "Fabrizio Mongo SH"})
 ```
 
+# Criando Index para indexar todos os textos de todos os atributos de uma coleção
+
+Trocar banco de dados 
+
+```
+    use dbmongo;
+```
+
+Criando Index para indexar todos os textos de todos os atributos de uma coleção:
+
+```
+    db.usuarios.createIndex( { "$**": "text" } );
+```
+
+Buscando todos os documentos com a palavra "Adam"
+
+```
+    db.usuarios.find({ $text: { $search: "Adam" } });
+```
+
+Inserindo um novo documento:
+
+```
+    db.usuarios.insert({
+        "id": 4,
+        "nomeBrasil": "Sarah Jones",
+        "isActive": false,
+        "dob": "1970-30-09"    
+    });
+```
+
+Buscando todos os docuementos com a palavra Sarah Jones:
+
+```
+    db.usuarios.find({ $text: { $search: "Sarah Jones" } });
+```
+
+
 
 # No Spring (camada repository) : 
 
