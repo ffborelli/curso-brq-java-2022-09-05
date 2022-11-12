@@ -2,6 +2,13 @@
 
 ## Docker 
 
+Mongo Compass (client):
+```
+    https://downloads.mongodb.com/compass/mongodb-compass-1.33.1-win32-x64.exe
+```
+
+Mongo container:
+
 ```
     docker run --name mongo -p 27017:27017 -d mongo:3.6
 ```
