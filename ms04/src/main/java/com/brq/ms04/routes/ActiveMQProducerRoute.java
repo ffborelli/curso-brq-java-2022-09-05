@@ -13,7 +13,7 @@ public class ActiveMQProducerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("timer:active-mq-producer?period=1000")
+        from("timer:active-mq-producer?period=1")
                 //.transform().constant("Apache Camel")
                 .process(new Processor() {
                     @Override
