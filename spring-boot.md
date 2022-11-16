@@ -268,3 +268,92 @@ Em outras palavras, sem ter que escrever nenhum código explícito, o Spring ir�
 
 - **Processor** é uma interface Java que é usada para adicionar lógica de integração personalizada a uma rota. Ele contém um único método de processo usado para pré-formar a lógica de negócios personalizada em uma mensagem recebida por um consumidor.
 
+
+# Fluxo "normal" de desenvolvimento
+
+1-) criar a camada de model (mapear o banco de dados em classes JAVA)
+2-) criar a camada de repository (camada de acesso ao banco de dados)
+3-) criar a camada de serviços 
+4-) criar os controllers e os DTOS, junto com a validação de dados
+5-) criar testes unitários
+
+Algumas dependências:
+
+- para validação, podemos utilizar a :
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+
+- para converter objetos(DTO -> Model e Model -> DTO), podemo usar a:
+
+<dependency>
+  <groupId>org.modelmapper</groupId>
+  <artifactId>modelmapper</artifactId>
+  <version>2.4.4</version>
+</dependency>
+
+- para usar o JPA (especificação) : Hibernate (implementa a especificação)
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+- para usar o Swagger:
+
+<dependency>
+  <groupId>io.springfox</groupId>
+  <artifactId>springfox-swagger2</artifactId>
+  <version>2.9.2</version>
+</dependency>
+
+<dependency>
+  <groupId>io.springfox</groupId>
+  <artifactId>springfox-swagger-ui</artifactId>
+  <version>2.9.2</version>
+</dependency>
+
+- para usar o driver do banco de dados relacional:
+
+<!-- dependência do driver do MySQL para o JAVA-->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- dependência do driver do PostgreSQL para o JAVA-->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.5.0</version>
+</dependency>
+
+- para criar o relatório dos testes unitários e enviar para o SonarQube (ferramenta de qualidade de código)
+
+<!-- dependência do Jacoco: testes unitários -->
+<dependency>
+  <groupId>org.jacoco</groupId>
+  <artifactId>jacoco-maven-plugin</artifactId>
+  <version>0.8.6</version>
+</dependency>
+
+- dependência para ActiveMQ para Spring
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-activemq</artifactId>
+    <version>2.7.5</version>
+</dependency>
+
+
+# Fluxo "normal" de usar/testar a aplicação
+
+1-) Partir do Postman (ou outro client de REST) com o verbo e endpoint correto
+
+# FAQs
+
+- qual o papel do POM?
+  resp: quando utilizamos o gerenciador de dependências MAVEN, temos que 
+  colocar todas as dependências (bibliotecas) no arquivo pom.xml, que está na raiz do projeto.
