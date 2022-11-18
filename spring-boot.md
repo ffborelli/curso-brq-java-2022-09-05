@@ -281,71 +281,90 @@ Algumas dependências:
 
 - para validação, podemos utilizar a :
 
-<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-</dependency>
+```
+  <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+  </dependency>
+```
 
 - para converter objetos(DTO -> Model e Model -> DTO), podemo usar a:
 
-<dependency>
-  <groupId>org.modelmapper</groupId>
-  <artifactId>modelmapper</artifactId>
-  <version>2.4.4</version>
-</dependency>
+```
+  <dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>2.4.4</version>
+  </dependency>
+```
 
 - para usar o JPA (especificação) : Hibernate (implementa a especificação)
 
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
+```
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+  </dependency>
+```
 
 - para usar o Swagger:
 
-<dependency>
-  <groupId>io.springfox</groupId>
-  <artifactId>springfox-swagger2</artifactId>
-  <version>2.9.2</version>
-</dependency>
+```
+  <dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>2.9.2</version>
+  </dependency>
+```
 
-<dependency>
-  <groupId>io.springfox</groupId>
-  <artifactId>springfox-swagger-ui</artifactId>
-  <version>2.9.2</version>
-</dependency>
+```
+  <dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.9.2</version>
+  </dependency>
+```
 
 - para usar o driver do banco de dados relacional:
 
-<!-- dependência do driver do MySQL para o JAVA-->
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <scope>runtime</scope>
-</dependency>
+```
+  <!-- dependência do driver do MySQL para o JAVA-->
+  <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+  </dependency>
+```
 
-<!-- dependência do driver do PostgreSQL para o JAVA-->
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>42.5.0</version>
-</dependency>
+```
+  <!-- dependência do driver do PostgreSQL para o JAVA-->
+  <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.5.0</version>
+  </dependency>
+```
 
 - para criar o relatório dos testes unitários e enviar para o SonarQube (ferramenta de qualidade de código)
 
-<!-- dependência do Jacoco: testes unitários -->
-<dependency>
-  <groupId>org.jacoco</groupId>
-  <artifactId>jacoco-maven-plugin</artifactId>
-  <version>0.8.6</version>
-</dependency>
+```
+  <!-- dependência do Jacoco: testes unitários -->
+  <dependency>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.6</version>
+  </dependency>
+```
 
 - dependência para ActiveMQ para Spring
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-activemq</artifactId>
-    <version>2.7.5</version>
-</dependency>
+
+```
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-activemq</artifactId>
+      <version>2.7.5</version>
+  </dependency>
+```
 
 
 # Fluxo "normal" de usar/testar a aplicação

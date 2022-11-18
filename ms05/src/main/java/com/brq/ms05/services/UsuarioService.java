@@ -67,4 +67,21 @@ public class UsuarioService implements IUsuarioService {
 
         return usuario.toDTO();
     }
+
+    public List<UsuarioDTO> findByNome(String nome){
+        final var dtos = repository.findByNomeContains(nome);
+        //final var dtos = repository.findByNome(nome);
+
+        return dtos.stream()
+                .map( el -> el.toDTO() )
+                .collect(Collectors.toList());
+    }
+
+    public List<UsuarioDTO> findByAllAttrs(String input){
+        final var dtos = repository.findByNomeContainsOrEmailContains(input, input);
+
+        return dtos.stream()
+                .map( el -> el.toDTO() )
+                .collect(Collectors.toList());
+    }
 }

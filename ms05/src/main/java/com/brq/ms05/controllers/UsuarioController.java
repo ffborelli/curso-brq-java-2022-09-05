@@ -2,7 +2,6 @@ package com.brq.ms05.controllers;
 
 import com.brq.ms05.dtos.UsuarioDTO;
 import com.brq.ms05.mappers.UsuarioMapper;
-import com.brq.ms05.models.UsuarioModel;
 import com.brq.ms05.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,4 +50,18 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> getOne(@PathVariable String id){
         return ResponseEntity.ok().body( service.getOne(id) );
     }
+
+    @GetMapping(value = "find-by-nome/{nome}")
+    public ResponseEntity< List<UsuarioDTO> > findByNome(
+            @PathVariable String nome){
+        return ResponseEntity.ok().body( service.findByNome(nome) );
+    }
+
+    @GetMapping(value = "find-by-all-attrs/{input}")
+    public ResponseEntity< List<UsuarioDTO> > findByAllAttrs(
+            @PathVariable String input){
+        return ResponseEntity.ok().body( service.findByAllAttrs(input) );
+    }
+
+
 }
