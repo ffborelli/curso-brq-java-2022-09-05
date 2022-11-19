@@ -376,3 +376,9 @@ Algumas dependências:
 - qual o papel do POM?
   resp: quando utilizamos o gerenciador de dependências MAVEN, temos que 
   colocar todas as dependências (bibliotecas) no arquivo pom.xml, que está na raiz do projeto.
+- ENUM?
+  resp: São campos que possuem um valor fixo pré-definidos na aplicação
+- Mapper?
+  resp: quando queremos criar um conversor de tipos de objetos no JAVA. Ex: criar um conversor de tipo de dados de DTO para Model
+- Config?
+  resp: um pacote que guarda configuração atributos das dependências do nosso projeto. Ex: criamos um arquivo config para guardar as configurações do swagger.
