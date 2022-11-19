@@ -118,6 +118,7 @@ Em outro terminal:
 ```
 
 
+docker run --name redis-commander -d --env REDIS_HOSTS=redis -p 8081:8081 rediscommander/redis-commander:latest
 
 
 
