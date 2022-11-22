@@ -70,6 +70,4 @@ public class UsuarioController {
             @PathVariable String input){
         return ResponseEntity.ok().body( service.findByAllAttrs(input) );
     }
-
-
 }
