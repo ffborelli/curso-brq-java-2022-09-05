@@ -11,3 +11,10 @@ mvn clean verify sonar:sonar \
 
 
 378d8df5ac00419b748caa091c31bc873167201b
+
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=ms05 \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=378d8df5ac00419b748caa091c31bc873167201b
+
+clean install sonar:sonar -Dsonar.projectKey=ms05 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=b801cdf52a27794a53808bf14d72a196b3eb57f4
