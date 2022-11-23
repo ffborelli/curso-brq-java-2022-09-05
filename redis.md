@@ -9,7 +9,11 @@
 ### Rodar container do Redis
 
 ```
-    docker run --name redis -d -p 6379:6379 -it redis:latest
+    docker network create -d bridge redis-network
+
+    docker run --name redis -d -p 6379:6379 -it --network=redis-network redis:latest
+    
+    docker run --name redis-commander -d --env REDIS_HOSTS=redis -p 8081:8081 --network=redis-network rediscommander/redis-commander:latest
 ```
 
 ### Entrar dentro do container do Redis
@@ -118,7 +122,7 @@ Em outro terminal:
 ```
 
 
-docker run --name redis-commander -d --env REDIS_HOSTS=redis -p 8081:8081 rediscommander/redis-commander:latest
+
 
 
 
