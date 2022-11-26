@@ -129,7 +129,7 @@ Baseado em:
     https://www.digitalocean.com/community/tutorials/how-to-manage-hashes-in-redis
 ```
 
-Um hash Redis é um tipo de dados que representa um mapeamento entre um campo de string e um valor de string. Os hashes podem conter muitos pares de valores de campo e são projetados para não ocupar muito espaço, tornando-os ideais para representar objetos de dados.
+O Redis Hash é um tipo de dados que representa um mapeamento entre um campo de string e um valor de string. Os hashes podem conter muitos pares de valores de campos e são projetados para não ocupar muito espaço, tornando-os ideais para representar objetos de dados.
 
 Para criar um hash, execute o comando hset. Este comando aceita o nome da chave de hash, a string de campo e a string de valor correspondente como argumentos:
 
