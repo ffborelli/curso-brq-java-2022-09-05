@@ -35,7 +35,7 @@ public class UsuarioService {
 
     public UsuarioDTO create(UsuarioDTO usuario){
         if (usuario.getId() == null){
-            UUID uuid = new UUID(long mostSignificant64Bits, long leastSignificant64Bits);
+            //UUID uuid = new UUID(long mostSignificant64Bits, long leastSignificant64Bits);
             usuario.setId(generateUniqueKeysWithUUIDAndMessageDigest());
         }
 
@@ -96,6 +96,24 @@ public class UsuarioService {
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado"));
 
         return usuario.toDTO();
+    }
+    
+    public List<UsuarioDTO> findByNome(String nome){
+
+        final var dtos = repository.findByNome(nome);
+
+        return dtos.stream()
+                .map( UsuarioModel::toDTO )
+                .collect(Collectors.toList());
+    }
+    
+    public List<UsuarioDTO> findByEmail(String email){
+
+        final var dtos = repository.findByEmail(email);
+
+        return dtos.stream()
+                .map( UsuarioModel::toDTO )
+                .collect(Collectors.toList());
     }
 
 }

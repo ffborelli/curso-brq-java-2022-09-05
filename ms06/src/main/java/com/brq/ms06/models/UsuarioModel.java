@@ -27,7 +27,9 @@ public class UsuarioModel implements Serializable {
     @Id
     @Indexed
     private String id;
+    @Indexed
     private String nome;
+    @Indexed
     private String email;
 
     public UsuarioDTO toDTO(){

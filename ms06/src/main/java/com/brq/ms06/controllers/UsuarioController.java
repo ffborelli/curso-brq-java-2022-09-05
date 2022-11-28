@@ -58,5 +58,17 @@ public class UsuarioController {
         return ResponseEntity.ok().body(u);
 
     } // getOne
+    
+    @GetMapping(value = "find-by-nome/{nome}")
+    public ResponseEntity< List<UsuarioDTO> > findByNome(
+            @PathVariable String nome){
+        return ResponseEntity.ok().body( service.findByNome(nome) );
+    }
+    
+    @GetMapping(value = "find-by-email/{email}")
+    public ResponseEntity< List<UsuarioDTO> > findByEmail(
+            @PathVariable String email){
+        return ResponseEntity.ok().body( service.findByEmail(email) );
+    }
 
 } // UsuarioController

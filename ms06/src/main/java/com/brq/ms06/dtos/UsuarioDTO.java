@@ -27,8 +27,8 @@ public class UsuarioDTO {
     @NotNull(message = "Preenchimento Obrigatório")
     private String email;
 
-    @Pattern(regexp = "^\\([1-9]{2}\\) [9]{0,1}[2-9]{1}[0-9]{3}\\-[0-9]{4}$", message = "Telefone inválido")
-    private String telefone;
+//    @Pattern(regexp = "^\\([1-9]{2}\\) [9]{0,1}[2-9]{1}[0-9]{3}\\-[0-9]{4}$", message = "Telefone inválido")
+//    private String telefone;
 
     public UsuarioModel toModel(){
 

@@ -5,3 +5,7 @@ meu-volume
 mysql-datadir
 
 tmp
+.vscode/
+bin/
+.settings
+.mvn
