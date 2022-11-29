@@ -29,7 +29,7 @@ public class UsuarioService {
     public List<UsuarioDTO> getAll(){
         final var list = (List<UsuarioModel>) repository.findAll();
 
-        return list.stream().map( x -> x.toDTO())
+        return list.stream().map( UsuarioModel::toDTO)
                 .collect(Collectors.toList());
     }
 

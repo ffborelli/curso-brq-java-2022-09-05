@@ -5,9 +5,7 @@ import java.io.Serializable;
 import com.brq.ms06.dtos.UsuarioDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
@@ -15,10 +13,8 @@ import org.springframework.data.redis.core.index.Indexed;
 import org.modelmapper.ModelMapper;
 
 @Data
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @RedisHash
 public class UsuarioModel implements Serializable {
 
