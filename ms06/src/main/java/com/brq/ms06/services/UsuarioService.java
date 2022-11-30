@@ -65,19 +65,17 @@ public class UsuarioService implements IUsuarioService {
 		
 		repository.deleteById(response.getId());		
 	}
-	
-	public List<UsuarioDTO> findByNomeContains(String input){
+
+	@Override
+	public List<UsuarioDTO> findByNome(String nome) {
 		
-		//List<UsuarioDTO> response = new ArrayList<>();
+		final var list = repository.findByNome(nome);
 		
-		final var list = (List<UsuarioModel>) repository.findAll();
-		
-		return list.stream()
-				.filter( x -> x.getNome().contains(input) )
-				.map( UsuarioModel::toDTO)
+		return list
+				.stream()
+				.map(UsuarioModel::toDTO)
 				.collect(Collectors.toList());
-		
-		//return response;
 	}
+	
 	
 }

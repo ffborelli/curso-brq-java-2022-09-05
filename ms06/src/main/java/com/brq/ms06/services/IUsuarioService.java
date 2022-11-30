@@ -12,4 +12,5 @@ public interface IUsuarioService {
 	UsuarioDTO create(UsuarioModel model);
 	UsuarioDTO update(String id, UsuarioDTO dto);
 	void delete(String id);
+	List<UsuarioDTO> findByNome(String nome);
 }

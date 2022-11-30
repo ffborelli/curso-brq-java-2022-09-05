@@ -59,4 +59,12 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok().build();
 	}
+	
+	@GetMapping(value = "find-by-nome/{nome}")
+	public ResponseEntity<List<UsuarioDTO>> findByNome(
+			@PathVariable String nome){
+		
+		return ResponseEntity.ok().body(service.findByNome(nome));
+	}
+	
 }
