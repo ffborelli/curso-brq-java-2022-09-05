@@ -13,4 +13,5 @@ public interface IUsuarioService {
 	UsuarioDTO update(String id, UsuarioDTO dto);
 	void delete(String id);
 	List<UsuarioDTO> findByNome(String nome);
+	List<UsuarioDTO> findByNomeContains(String input);
 }

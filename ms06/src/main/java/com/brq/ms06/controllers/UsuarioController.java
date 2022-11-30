@@ -67,4 +67,11 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(service.findByNome(nome));
 	}
 	
+	@GetMapping(value = "find-by-nome-contains/{nome}")
+	public ResponseEntity<List<UsuarioDTO>> findByNomeContains(
+			@PathVariable String nome){
+		
+		return ResponseEntity.ok().body(service.findByNomeContains(nome));
+	}
+	
 }

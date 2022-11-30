@@ -76,6 +76,33 @@ public class UsuarioService implements IUsuarioService {
 				.map(UsuarioModel::toDTO)
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<UsuarioDTO> findByNomeContains(String input) {
+		
+		final var list = (List<UsuarioModel>) repository.findAll();
+		
+//		List<UsuarioDTO> listDTO = new ArrayList<>();
+//		
+//		/* 1-) percorrer toda a lista e procurar o que está dentro da variável input em todos os nomes da lista
+//		 * 
+//		 * */
+//		
+//		for (UsuarioModel usuario : list) {
+//			
+//			if (usuario.getNome().contains(input)) {
+//				listDTO.add(usuario.toDTO());
+//			}
+//		}
+//		
+//		return listDTO;
+		
+		return list
+				.stream()
+				.filter( element -> element.getNome().contains(input) || element.getEmail().contains(input) )
+				.map(UsuarioModel::toDTO)
+				.collect(Collectors.toList());
+	}
 	
 	
 }
