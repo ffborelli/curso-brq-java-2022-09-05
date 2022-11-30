@@ -1,5 +1,6 @@
 package com.brq.ms06.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,4 +65,19 @@ public class UsuarioService implements IUsuarioService {
 		
 		repository.deleteById(response.getId());		
 	}
+	
+	public List<UsuarioDTO> findByNomeContains(String input){
+		
+		//List<UsuarioDTO> response = new ArrayList<>();
+		
+		final var list = (List<UsuarioModel>) repository.findAll();
+		
+		return list.stream()
+				.filter( x -> x.getNome().contains(input) )
+				.map( UsuarioModel::toDTO)
+				.collect(Collectors.toList());
+		
+		//return response;
+	}
+	
 }
