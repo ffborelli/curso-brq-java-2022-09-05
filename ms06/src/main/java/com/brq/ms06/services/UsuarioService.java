@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.brq.ms06.dtos.UsuarioDTO;
@@ -97,11 +98,31 @@ public class UsuarioService implements IUsuarioService {
 //		
 //		return listDTO;
 		
+		// input%
 		return list
 				.stream()
 				.filter( element -> element.getNome().contains(input) || element.getEmail().contains(input) )
 				.map(UsuarioModel::toDTO)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public void insertMany(int times) {
+		
+		List<UsuarioModel> list = new ArrayList<>();
+		
+		for (int i = 0; i < times; i++) {
+			
+			final var u = UsuarioModel
+					.builder()
+					.nome("Usuario " + i)
+					.email("usuario"+i+"@gmail.com")
+					.build();
+			//repository.save(u);
+			list.add(u);
+		}
+
+		repository.saveAll(list);
 	}
 	
 	

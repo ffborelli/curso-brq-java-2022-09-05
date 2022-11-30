@@ -14,4 +14,5 @@ public interface IUsuarioService {
 	void delete(String id);
 	List<UsuarioDTO> findByNome(String nome);
 	List<UsuarioDTO> findByNomeContains(String input);
+	void insertMany(int times);
 }

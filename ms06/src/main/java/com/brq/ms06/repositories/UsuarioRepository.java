@@ -12,5 +12,4 @@ public interface UsuarioRepository
 	extends CrudRepository<UsuarioModel, String> {
 
 	List<UsuarioModel> findByNome(String nome);
-	
 }

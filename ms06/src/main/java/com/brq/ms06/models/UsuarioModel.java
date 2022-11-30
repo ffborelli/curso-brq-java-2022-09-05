@@ -8,9 +8,11 @@ import org.springframework.data.redis.core.index.Indexed;
 import com.brq.ms06.dtos.UsuarioDTO;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
