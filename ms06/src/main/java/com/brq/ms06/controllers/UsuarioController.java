@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.ms06.dtos.UsuarioDTO;
@@ -78,9 +79,11 @@ public class UsuarioController {
 	
 	@GetMapping(value = "find-by-email/{email}")
 	public ResponseEntity<Page<UsuarioModel>> findByEmail(
-			@PathVariable String email){
+			@PathVariable String email,
+			@RequestParam (name = "page", defaultValue = "0") int page,
+			@RequestParam (name = "limit", defaultValue = "3") int limit){
 		
-		return ResponseEntity.ok().body(service.findByEmail(email));
+		return ResponseEntity.ok().body(service.findByEmail(email, page, limit));
 	}
 	
 }

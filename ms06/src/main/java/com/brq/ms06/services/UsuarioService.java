@@ -127,9 +127,9 @@ public class UsuarioService implements IUsuarioService {
 		repository.saveAll(list);
 	}
 	
-	public Page<UsuarioModel> findByEmail(String email){
+	public Page<UsuarioModel> findByEmail(String email, int page, int limit){
 		
-		final var pageRequest = PageRequest.of(0, 3);
+		final var pageRequest = PageRequest.of(page, limit);
 		
 		Page<UsuarioModel> response = repository.findByEmail(email, pageRequest);
 		
