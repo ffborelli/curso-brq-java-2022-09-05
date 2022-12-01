@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -116,7 +117,8 @@ public class UsuarioService implements IUsuarioService {
 			final var u = UsuarioModel
 					.builder()
 					.nome("Usuario " + i)
-					.email("usuario"+i+"@gmail.com")
+					//.email("usuario"+i+"@gmail.com")
+					.email("usuario@gmail.com")
 					.build();
 			//repository.save(u);
 			list.add(u);
@@ -125,5 +127,17 @@ public class UsuarioService implements IUsuarioService {
 		repository.saveAll(list);
 	}
 	
+	public Page<UsuarioModel> findByEmail(String email){
+		
+		final var pageRequest = PageRequest.of(0, 3);
+		
+		Page<UsuarioModel> response = repository.findByEmail(email, pageRequest);
+		
+		return response;
+	}
+	
+	public void deleteAll() {
+		repository.deleteAll();
+	}
 	
 }

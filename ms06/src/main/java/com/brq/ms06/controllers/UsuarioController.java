@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.ms06.dtos.UsuarioDTO;
+import com.brq.ms06.models.UsuarioModel;
 import com.brq.ms06.services.IUsuarioService;
 
 @RestController
@@ -72,6 +74,13 @@ public class UsuarioController {
 			@PathVariable String nome){
 		
 		return ResponseEntity.ok().body(service.findByNomeContains(nome));
+	}
+	
+	@GetMapping(value = "find-by-email/{email}")
+	public ResponseEntity<Page<UsuarioModel>> findByEmail(
+			@PathVariable String email){
+		
+		return ResponseEntity.ok().body(service.findByEmail(email));
 	}
 	
 }

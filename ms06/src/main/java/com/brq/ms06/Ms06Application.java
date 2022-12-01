@@ -21,6 +21,7 @@ public class Ms06Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		usuarioService.deleteAll();
 		final var list = usuarioService.getAll();
 		
 		if (list.size() < 100) {
