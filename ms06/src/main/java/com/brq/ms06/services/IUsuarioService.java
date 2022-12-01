@@ -17,6 +17,6 @@ public interface IUsuarioService {
 	List<UsuarioDTO> findByNome(String nome);
 	List<UsuarioDTO> findByNomeContains(String input);
 	void insertMany(int times);
-	Page<UsuarioModel> findByEmail(String email, int page, int limit);
+	Page<UsuarioModel> findByEmail(String email, int page, int limit, String orderBy, String direction);
 	void deleteAll();
 }

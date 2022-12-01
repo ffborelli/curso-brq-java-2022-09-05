@@ -81,9 +81,11 @@ public class UsuarioController {
 	public ResponseEntity<Page<UsuarioModel>> findByEmail(
 			@PathVariable String email,
 			@RequestParam (name = "page", defaultValue = "0") int page,
-			@RequestParam (name = "limit", defaultValue = "3") int limit){
+			@RequestParam (name = "limit", defaultValue = "3") int limit,
+			@RequestParam (name = "orderBy", defaultValue = "id") String orderBy,
+			@RequestParam (name = "direction", defaultValue = "ASC") String direction){
 		
-		return ResponseEntity.ok().body(service.findByEmail(email, page, limit));
+		return ResponseEntity.ok().body(service.findByEmail(email, page, limit, orderBy, direction));
 	}
 	
 }

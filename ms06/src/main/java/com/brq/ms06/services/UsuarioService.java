@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.brq.ms06.dtos.UsuarioDTO;
@@ -14,6 +16,7 @@ import com.brq.ms06.enums.MensagensExceptionEnum;
 import com.brq.ms06.exceptions.NaoAcheiException;
 import com.brq.ms06.models.UsuarioModel;
 import com.brq.ms06.repositories.UsuarioRepository;
+
 
 @Service
 public class UsuarioService implements IUsuarioService {
@@ -127,9 +130,9 @@ public class UsuarioService implements IUsuarioService {
 		repository.saveAll(list);
 	}
 	
-	public Page<UsuarioModel> findByEmail(String email, int page, int limit){
+	public Page<UsuarioModel> findByEmail(String email, int page, int limit, String orderBy, String direction){
 		
-		final var pageRequest = PageRequest.of(page, limit);
+		final var pageRequest = PageRequest.of(page, limit, Direction.valueOf(direction), orderBy );
 		
 		Page<UsuarioModel> response = repository.findByEmail(email, pageRequest);
 		
