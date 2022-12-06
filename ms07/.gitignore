@@ -34,3 +34,4 @@ build/
 bin/
 .settings
 .mvn
+camunda-h2-database.mv.db
