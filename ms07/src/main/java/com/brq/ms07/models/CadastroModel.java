@@ -1,6 +1,5 @@
 package com.brq.ms07.models;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

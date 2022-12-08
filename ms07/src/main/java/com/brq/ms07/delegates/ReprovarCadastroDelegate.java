@@ -30,7 +30,5 @@ public class ReprovarCadastroDelegate
 		model.setIdade(idade);
 		
 		service.create(model);
-
-
 	}
 }
