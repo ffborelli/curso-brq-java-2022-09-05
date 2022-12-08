@@ -14,7 +14,9 @@ public class ReprovarCadastroDelegate
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		log.info("Reprovar Cadastro....");
+		
+		final var idade = (Integer) execution.getVariable("idade");
+		
+		log.info("Reprovar Cadastro : idade {}", idade);
 	}
-
 }
