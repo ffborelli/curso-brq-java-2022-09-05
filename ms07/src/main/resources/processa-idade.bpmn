@@ -12,7 +12,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1dyknab" sourceRef="Activity_12xply5" targetRef="Gateway_1pla6q1" />
     <bpmn:sequenceFlow id="Flow_04sg4dx" sourceRef="Gateway_1pla6q1" targetRef="Activity_1q7lldj">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${idade &gt; 18}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${idade &gt;= 18}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0se1psx" sourceRef="Gateway_1pla6q1" targetRef="Activity_06hlpkf" />
     <bpmn:endEvent id="Event_1o9mcrb">
@@ -24,6 +24,9 @@
     <bpmn:sequenceFlow id="Flow_12tv24a" sourceRef="Activity_1q7lldj" targetRef="Event_0v2dj5m" />
     <bpmn:sequenceFlow id="Flow_046x32d" sourceRef="Activity_06hlpkf" targetRef="Event_1o9mcrb" />
     <bpmn:serviceTask id="Activity_12xply5" name="Processa Idade" camunda:delegateExpression="${processaIdade}">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${processaIdadeStartListener}" event="start" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1o26hsw</bpmn:incoming>
       <bpmn:outgoing>Flow_1dyknab</bpmn:outgoing>
     </bpmn:serviceTask>

@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class CamundaController {
 	
@@ -17,12 +20,15 @@ public class CamundaController {
 	public ResponseEntity<Void> processaIdade(
 			@PathVariable Integer idade
 	){
+		log.info("Controller");
 		
-		this.runtimeService
+		final var id = this.runtimeService
 			.createProcessInstanceByKey("processa-idade")
 			.setVariable("idade", idade)
 			.execute()
 			.getProcessInstanceId();
+		
+		log.info("ID do processo : {}", id);
 		
 		return ResponseEntity.ok().build();
 	}
