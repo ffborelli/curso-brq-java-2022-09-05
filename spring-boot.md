@@ -425,3 +425,13 @@ O JpaRepository extende a CrudRepository e adiciona funcionalidades específicas
 
 - Java Delegate: é um padrão de projeto que permite uma classe acessar as propriedade de outra classe. Pode ser visto como uma relação de mapeamentos entre objetos na qual o método do primeiro objeto chama o método do segundo objeto.
 
+
+Exemplo de como mandar as variáveis ao instanciar um processo:
+```
+{
+    "idade" : {
+        "value" : 20,
+        "type": "Integer"
+    }
+}
+```
