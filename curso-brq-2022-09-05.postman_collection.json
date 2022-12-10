@@ -152,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Fabrizio\",\n    \"email\" : \"fabrizio@gp.com\",\n    \"telefone\" : \"(11) 98273-3817\"\n}",
+							"raw": "{\n    \"nome\": \"SAT5\",\n    \"email\" : \"fabrizio3@gp.com.br\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,13 +243,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/usuarios/636fac2862137dce7bdb7fe6",
+							"raw": "localhost:8080/usuario/636fac2862137dce7bdb7fe6",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"usuarios",
+								"usuario",
 								"636fac2862137dce7bdb7fe6"
 							]
 						}
@@ -297,20 +297,60 @@
 					"response": []
 				},
 				{
-					"name": "find-by-all-attrs",
+					"name": "find-by-nome-contains",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/usuarios/find-by-all-attrs/fab",
+							"raw": "localhost:8080/usuarios/find-by-nome/Fabrizio",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"usuarios",
-								"find-by-all-attrs",
-								"fab"
+								"find-by-nome",
+								"Fabrizio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-by-email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/find-by-nome/Fabrizio",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"find-by-nome",
+								"Fabrizio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-by-all-attrs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/find-by-all-attrs1/sh",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"find-by-all-attrs1",
+								"sh"
 							]
 						}
 					},
