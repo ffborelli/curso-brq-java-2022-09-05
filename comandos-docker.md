@@ -182,3 +182,9 @@ Para criar nossa própria imagem:
     cd nginx
     docker build -t brq-nginx:latest .
 ```
+
+# para criar um container oracle
+
+```
+    docker run -d -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true  -e ORACLE_PASSWORD=oracle -e RELAX_SECURITY=1 --name oracle-xe-11g -e TZ=BR epiclabs/docker-oracle-xe-11g
+```
