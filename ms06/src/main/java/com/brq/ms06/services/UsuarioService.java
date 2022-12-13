@@ -16,6 +16,7 @@ import com.brq.ms06.enums.MensagensExceptionEnum;
 import com.brq.ms06.exceptions.NaoAcheiException;
 import com.brq.ms06.models.UsuarioModel;
 import com.brq.ms06.repositories.UsuarioRepository;
+import com.brq.ms06.utils.Utils;
 
 
 @Service
@@ -23,6 +24,9 @@ public class UsuarioService implements IUsuarioService {
 
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Autowired
+	private Utils utils;
 	
 	@Override
 	public List<UsuarioDTO> getAll() {
@@ -112,6 +116,8 @@ public class UsuarioService implements IUsuarioService {
 
 	@Override
 	public void insertMany(int times) {
+		
+		utils.mostrarMensagemNoConsole("Olá");
 		
 		List<UsuarioModel> list = new ArrayList<>();
 		

@@ -1,6 +1,9 @@
 package com.brq.ms06.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -23,6 +26,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.brq.ms06.models.UsuarioModel;
 import com.brq.ms06.repositories.UsuarioRepository;
+import com.brq.ms06.utils.Utils;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -35,6 +39,9 @@ public class UsuarioServiceTest {
 	// mockar os outros objetos necessário para teste unitário
 	@MockBean
 	private UsuarioRepository repository;
+	
+	@MockBean
+	private Utils utils;
 	
 	@Test
 	void getAllTest() {
@@ -93,6 +100,39 @@ public class UsuarioServiceTest {
 		assertThat(response.getContent().size()).isEqualTo(1);
 		assertThat(response.getTotalElements()).isEqualTo(1L);
 		
+	}
+	
+	@Test
+	void insertManyTest() {
+		
+		final var times = 1;
+		
+		// dado que 
+		final var listEntity = Arrays
+				.asList(getUsuarioModelMock(null, "Usuario 0","usuario@gmail.com"));
+		
+		// quando
+		when(repository.saveAll(listEntity)).thenReturn(listEntity);
+		doNothing().when(utils).mostrarMensagemNoConsole("Olá");
+		
+		//então
+		service.insertMany(times);
+			
+		//verificar resultado
+		verify(repository, atLeastOnce()).saveAll(listEntity);
+		
+	}
+	
+	private UsuarioModel getUsuarioModelMock(String id, String nome, String email) {
+		
+		final var model = UsuarioModel
+				.builder()
+				.id(id)
+				.nome(nome)
+				.email(email)
+				.build();
+
+		return model;
 	}
 	
 	private Page<UsuarioModel> getPageUsuarioModel(){
