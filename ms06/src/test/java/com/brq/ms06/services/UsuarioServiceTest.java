@@ -2,6 +2,7 @@ package com.brq.ms06.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.atMostOnce;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -121,6 +122,20 @@ public class UsuarioServiceTest {
 		//verificar resultado
 		verify(repository, atLeastOnce()).saveAll(listEntity);
 		
+	}
+	
+	@Test
+	void deleteAllTest() {
+		// dado que
+		
+		// quando
+		doNothing().when(repository).deleteAll();
+		
+		//então
+		service.deleteAll();
+		
+		// verificar resultado
+		verify(repository, atMostOnce()).deleteAll();
 	}
 	
 	private UsuarioModel getUsuarioModelMock(String id, String nome, String email) {
