@@ -8,12 +8,13 @@ FROM nginx:latest
 
 # copiando o arquivo conf.txt para a raiz da imagem (futuro container)
 COPY conf.txt /
+COPY index.html /usr/share/nginx/html/
 
 # apt-get update no linux atualiza todos os possíveis pacotes que podemos instalar
-RUN apt-get update
+#RUN apt-get update
 
 # instalando o editor de texto nano
-RUN apt-get install nano -y
+#RUN apt-get install nano -y
 
 # para criar a nossa própria imagem, devemos usar o comando docker build 
 # docker build -t NOME-DA-IMAGEM:TAG .
