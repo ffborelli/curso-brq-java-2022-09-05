@@ -132,9 +132,11 @@ public class UsuarioService implements IUsuarioService {
 	
 	public Page<UsuarioModel> findByEmail(String email, int page, int limit, String orderBy, String direction){
 		
-		final var pageRequest = PageRequest.of(page, limit, Direction.valueOf(direction), orderBy );
+		final var pageRequest = 
+				PageRequest.of(page, limit, Direction.valueOf(direction), orderBy );
 		
-		Page<UsuarioModel> response = repository.findByEmail(email, pageRequest);
+		Page<UsuarioModel> response = 
+				repository.findByEmail(email, pageRequest);
 		
 		return response;
 	}
