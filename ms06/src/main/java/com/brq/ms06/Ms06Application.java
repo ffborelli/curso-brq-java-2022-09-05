@@ -21,12 +21,12 @@ public class Ms06Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		usuarioService.deleteAll();
-		final var list = usuarioService.getAll();
+		//usuarioService.deleteAll();
+		//final var list = usuarioService.getAll();
 		
-		if (list.size() < 100) {
+		//if (list.size() < 100) {
 			usuarioService.insertMany(500);
-		}
+		//}
 	}
 
 }
