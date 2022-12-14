@@ -7,9 +7,11 @@ import org.modelmapper.ModelMapper;
 import com.brq.ms06.models.UsuarioModel;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

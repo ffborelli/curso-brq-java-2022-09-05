@@ -361,8 +361,6 @@ public class UsuarioServiceTest {
 				
 			@Override
 			public Iterator<UsuarioModel> iterator() {
-				
-				
 				return (Iterator<UsuarioModel>) listEntity;
 			}
 			
