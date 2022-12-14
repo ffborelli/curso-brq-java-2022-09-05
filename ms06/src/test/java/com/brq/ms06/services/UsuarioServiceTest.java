@@ -2,9 +2,8 @@ package com.brq.ms06.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.atMostOnce;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -20,14 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.server.ResponseStatusException;
-
 import com.brq.ms06.exceptions.NaoAcheiException;
 import com.brq.ms06.models.UsuarioModel;
 import com.brq.ms06.repositories.UsuarioRepository;
@@ -151,7 +147,6 @@ public class UsuarioServiceTest {
 		final var optional = Optional.of(usuarioModel);
 		
 		final var usuarioModelAlterado = getUsuarioModelMock(id, nomeAlterado, emailAlterado);
-		final var optionalAlterado = Optional.of(usuarioModelAlterado);
 		
 		// quando
 		when(repository.findById(id)).thenReturn(optional);
@@ -190,7 +185,89 @@ public class UsuarioServiceTest {
 					() -> service.update(id, 
 							usuarioModelAlterado.toDTO())) ;
 	}
+	
+	@Test
+	void deleteWhenFindUser() {
+		
+		// dado que
+		String id = "1";
+		String nome = "nome";
+		String email = "email";
+		
+		final var usuarioModel = getUsuarioModelMock(id, nome, email);
+		final var optional = Optional.of(usuarioModel);
+		
+		// quando
+		when(repository.findById(id)).thenReturn(optional);
+		
+		// então
+		service.delete(id);
+		
+		// verificar se o teste deu certo
+		verify(repository, times(1)).deleteById(id);
+	}
+	
+	@Test
+	void deleteWhenNotFindUser() {
 
+		// dado que
+		String id = "1";
+
+		//final var usuarioModel = getUsuarioModelMock(id, nome, email);
+		Optional<UsuarioModel> optional = Optional.empty();
+
+		// quando
+		when(repository.findById(id)).thenReturn(optional);
+
+		// então
+		assertThrows(NaoAcheiException.class, () -> service.delete(id));
+	}
+	
+	@Test
+	void findByNomeTest() {
+		
+		// dado que 
+		
+		String id = "1";
+		String nome = "nome";
+		String email = "email";
+		
+		final var listEntity = Arrays
+				.asList(getUsuarioModelMock(id, nome,email));
+		
+		// quando
+		when(repository.findByNome(nome)).thenReturn(listEntity);
+		
+		// então
+		final var response = service.findByNome(nome);
+		
+		// verificar resultado do teste
+		
+		assertThat(response.get(0))
+			.isEqualTo(listEntity.get(0).toDTO());
+	}
+	
+	@Test
+	void findByNomeContainsTest() {
+		
+		// dado que
+		String id = "1";
+		String nome = "nome";
+		String email = "email";
+		
+		final var listEntity = Arrays.asList(getUsuarioModelMock(id, nome, email));
+		
+		//quando
+		when(repository.findAll()).thenReturn(listEntity);
+		
+		//então
+		final var response = service.findByNomeContains(nome);
+		
+		// verificar testes
+		assertThat(response.get(0))
+			.isEqualTo(listEntity.get(0).toDTO());
+		
+	}
 	
 	@Test
 	void findByEmailTest() {
@@ -226,9 +303,8 @@ public class UsuarioServiceTest {
 	@Test
 	void insertManyTest() {
 		
-		final var times = 1;
-		
 		// dado que 
+		final var times = 1;
 		final var listEntity = Arrays
 				.asList(getUsuarioModelMock(null, "Usuario 0","usuario@gmail.com"));
 		
@@ -240,7 +316,7 @@ public class UsuarioServiceTest {
 		service.insertMany(times);
 			
 		//verificar resultado
-		verify(repository, atLeastOnce()).saveAll(listEntity);
+		verify(repository, times(1)).saveAll(listEntity);
 		
 	}
 	
@@ -255,7 +331,7 @@ public class UsuarioServiceTest {
 		service.deleteAll();
 		
 		// verificar resultado
-		verify(repository, atMostOnce()).deleteAll();
+		verify(repository, times(1)).deleteAll();
 	}
 	
 	private UsuarioModel getUsuarioModelMock(String id, String nome, String email) {
@@ -383,6 +459,5 @@ public class UsuarioServiceTest {
 		
 		return pageUsuarioModel;
 	}
-	
 	
 }
