@@ -145,6 +145,7 @@ A Injeção de Dependência é uma técnica de desenvolvimento utilizada para ev
 - **@ControllerAdvice**: permite manipular exceções de forma global. Para cada tipo de exceção, podemos manipular desde o status até a mensagem de retorno.
 - **@Slf4j**: é uma abstração JAVA para criar **logging** das aplicações de uma forma simples 
 - **@Value**:  anotação que permite injetar valores em campos (variáveis JAVA) dentro dos beans gerenciados pelo Spring (@Component, @Service, @Repository, @RestController). 
+- **DataJpaTest, @DataMongoTest**: permite testar a camada repository com um banco de dados embutido apenas para testes unitário e apartado do banco de dados da aplicação.
 # DTO
 
 Data Transfer Object **(DTO)** ou simplesmente Transfer Object é um padrão de projetos bastante usado em Java para o transporte de dados entre diferentes componentes de um sistema, diferentes instâncias ou processos de um sistema distribuído ou diferentes sistemas via serialização.
