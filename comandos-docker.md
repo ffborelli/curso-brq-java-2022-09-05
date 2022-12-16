@@ -214,3 +214,40 @@ docker run --name redis -d -p 6379:6379 -it --network=redis-network redis:latest
 ### criando interface gráfica para acessar Redis
 docker run --name redis-commander -d --env REDIS_HOSTS=redis -p 8081:8081 --network=redis-network rediscommander/redis-commander:latest
 
+### Criando Rede Docker para exercício mongo
+
+- buildar container docker
+
+```
+    docker build -t ms05 .
+```
+
+- criar rede docker
+
+```
+    docker network create mongo-network
+```
+
+- associoar banco de dados mongo a nova rede docker
+
+```
+    docker network connect mongo-network mongo
+```
+
+- parar o container ms05 antigo
+
+```
+    docker stop ms05
+```
+
+- remover container ms05 antigo
+
+```
+    docker rm ms05
+```
+
+- subir novo container ms05 na nova rede docker
+
+```
+    docker run -p 8080:8080 --name ms05 --network mongo-network  ms05
+```
